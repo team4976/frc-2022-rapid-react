@@ -40,7 +40,7 @@ public class Robot extends TimedRobot {
 
     double forward = controller.getRightTriggerAxis();
     double reverse = controller.getLeftTriggerAxis();
-
+    //comment
     double output = forward - reverse;
 
     // Set the output of the motor controller to 100% in the forward direction
