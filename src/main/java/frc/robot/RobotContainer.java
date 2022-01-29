@@ -6,8 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.TeleopDrive;
+import frc.robot.subsystems.RobotDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -17,15 +17,27 @@ import edu.wpi.first.wpilibj2.command.Command;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  // The robot's subsystems and commands are defined here...
+  private final RobotDrive _robotDrive = new RobotDrive();
+
+  private final XboxController _primaryController = new XboxController(0);
+  // private final XboxController _secondaryController = new XboxController(1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+
     // Configure the button bindings
     configureButtonBindings();
+    
+    _robotDrive.setDefaultCommand(
+      new TeleopDrive(
+        _robotDrive, 
+        _primaryController::getLeftX, 
+        _primaryController::getLeftTriggerAxis,
+        _primaryController::getRightTriggerAxis
+        )
+    );
   }
 
   /**
@@ -34,7 +46,9 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -42,7 +56,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return null;
   }
+
 }
