@@ -7,6 +7,8 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.sensors.CANCoder;
+import com.ctre.phoenix.sensors.WPI_CANCoder;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -29,8 +31,10 @@ public class Robot extends TimedRobot {
 
   public static XboxController controller = new XboxController(1);
 
-  double speed = .4;
+  CANCoder cancoder = new CANCoder(0); // creates a new CANCoder with ID 0
 
+  double speed = .4;
+  double velocity = cancoder.getVelocity();
   @Override
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
@@ -86,7 +90,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-  
+    System.out.println(velocity);
     int pov = controller.getPOV();
     if(controller.getAButton()){
       motor.set(ControlMode.PercentOutput,-speed);
