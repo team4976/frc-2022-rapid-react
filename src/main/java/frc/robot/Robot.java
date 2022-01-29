@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
     double reverse = controller.getLeftTriggerAxis();
     //comment
     double output = forward - reverse;
+    output = output;
 
     // Set the output of the motor controller to 100% in the forward direction
     motor.set(ControlMode.PercentOutput, output);
