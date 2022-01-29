@@ -21,7 +21,9 @@ public class Robot extends TimedRobot {
   public static XboxController controller = new XboxController(0);
                                                          //    ^ set this number to the index in driverstation
   @Override
-  public void robotInit() {}
+  public void robotInit() {
+    // I've added a comment
+  }
   
   @Override
   public void robotPeriodic() {}
