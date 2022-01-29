@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
                                                          //    ^ set this number to the index in driverstation
   @Override
   public void robotInit() {
-    //comments
+    //comment added
 
   }
   
