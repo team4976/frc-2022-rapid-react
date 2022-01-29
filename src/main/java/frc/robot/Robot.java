@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 
 public class Robot extends TimedRobot {
  
-  // Make a reference to the Motor Controller
+  // Make a reference to the Motor Controller - Test 123
   public static TalonFX motor = new TalonFX(10);
                                       //    ^ set this number to the ID in Phoenix tuner
 
