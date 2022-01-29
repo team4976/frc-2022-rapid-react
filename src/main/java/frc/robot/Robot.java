@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
   
   @Override
   public void teleopPeriodic() {
+    // Hello there
 
     double forward = controller.getRightTriggerAxis();
     double reverse = controller.getLeftTriggerAxis();
