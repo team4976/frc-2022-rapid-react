@@ -44,7 +44,27 @@ public class Robot extends TimedRobot {
     double output = forward - reverse;
 
     // Set the output of the motor controller to 100% in the forward direction
-    motor.set(ControlMode.PercentOutput, output);
+    //motor.set(ControlMode.PercentOutput, output);
+
+    System.out.println(motor.getSelectedSensorVelocity());
+    int pov = controller.getPOV();
+    int speed = 0;
+    if(controller.getAButton()){
+      motor.set(ControlMode.Velocity,-speed);
+    }
+    else{
+      motor.set(ControlMode.Velocity,0);
+
+    }
+    if(pov == 0){
+      speed += 1000;
+    }
+    else if(pov == 180){
+      speed -=1000;
+    }
+  }
+
+
   }
 
   @Override
