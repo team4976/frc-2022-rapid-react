@@ -21,7 +21,7 @@ public class Intake extends SubsystemBase {
         intakeMotor.set(ControlMode.PercentOutput, 0);
     }
 
-    public bool isBallStored() {
+    public boolean isBallStored() {
         ///
 
         return false;
