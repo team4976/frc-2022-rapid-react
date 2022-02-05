@@ -22,8 +22,6 @@ public class Intake extends SubsystemBase {
     }
 
     public boolean isBallStored() {
-        ///
-
         return false;
     }
 }

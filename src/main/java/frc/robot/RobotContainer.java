@@ -7,9 +7,12 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.IntakeBall;
+import frc.robot.commands.RunIndexer;
+import frc.robot.commands.ShootHigh;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -24,6 +27,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RobotDrive _robotDrive = new RobotDrive();
   private final Intake _intake = new Intake();
+  private final Shooter shooter = new Shooter();
 
   private final XboxController _primaryController = new XboxController(0);
   // private final XboxController _secondaryController = new XboxController(1);
@@ -51,7 +55,13 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-   
+
+    new JoystickButton(_primaryController, XboxController.Button.kY.value)
+      .whenPressed(new ShootHigh(shooter));
+
+    new JoystickButton(_primaryController, XboxController.Button.kB.value)
+      .whileHeld(new RunIndexer(shooter));
+
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
       .whenPressed(new IntakeBall(_intake));
   }

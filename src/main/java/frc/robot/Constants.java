@@ -19,4 +19,11 @@ public final class Constants {
 
     public static int kDRIVE_RIGHT_A_NODE_ID = 3;
     public static int kDRIVE_RIGHT_B_NODE_ID = 4;
+
+    public static int kSHOOTER_A_NODE_ID = 45;
+    public static double kSHOOT_lOW_SPEED = 0.2;
+    public static double kSHOOT_HIGH_SPEED = 0.8;
+
+    public static int kINDEX_NODE_ID = 46;
+
 }
