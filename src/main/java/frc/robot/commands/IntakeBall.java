@@ -15,17 +15,13 @@ public class IntakeBall extends CommandBase {
     @Override
     public void initialize() {
         intake.intakeBall();
+        intake.extendSolenoid();
+        intake.compressorCheck();
         super.initialize();
     }
 
     @Override
-    public void end(boolean interrupted) {
-        intake.stop();
-        super.end(interrupted);
-    }
-
-    @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }

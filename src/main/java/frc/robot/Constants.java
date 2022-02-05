@@ -14,9 +14,13 @@ package frc.robot;
  */
 public final class Constants {
 
-    public static int kDRIVE_LEFT_A_NODE_ID = 0;
-    public static int kDRIVE_LEFT_B_NODE_ID = 1;
+    public static int kDRIVE_LEFT_A_NODE_ID = 41;
+    public static int kDRIVE_LEFT_B_NODE_ID = 43;
 
-    public static int kDRIVE_RIGHT_A_NODE_ID = 3;
-    public static int kDRIVE_RIGHT_B_NODE_ID = 4;
+    public static int kDRIVE_RIGHT_A_NODE_ID = 42;
+    public static int kDRIVE_RIGHT_B_NODE_ID = 44;
+
+    public static int kSHOOTER_A_NODE_ID = 52;
+    public static double kSHOOT_LOW_SPEED = 0.2;
+    public static double kSHOOT_HIGH_SPEED = 0.8;
 }
