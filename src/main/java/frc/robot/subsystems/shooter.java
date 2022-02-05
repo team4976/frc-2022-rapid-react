@@ -19,7 +19,7 @@ public class Shooter extends SubsystemBase {
     }
 
     public boolean ballAtIndexer(){
-        return indexSensor.get()
+        return indexSensor.get();
     }
 
 }
