@@ -1,0 +1,23 @@
+package frc.robot.commands;
+
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.ShooterCommand;
+
+public class RunIndexer extends CommandBase {
+    private ShooterCommand shooter;
+
+    public RunIndexer(ShooterCommand shooter){
+        this.shooter = shooter;
+
+    }
+
+    @Override
+    public boolean isFinished(){
+        return false;
+    }
+    
+    @Override
+    public void initialize() {
+        shooter.setIndexerSpeed(1);
+    }
+}
