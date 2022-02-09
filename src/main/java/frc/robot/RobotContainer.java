@@ -57,12 +57,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-   new JoystickButton(_primaryController, XboxController.Button.kY.value)
-      .whenPressed(new ShootHigh(_shooter));
+   //new JoystickButton(_primaryController, XboxController.Button.kY.value)
+    //  .whenPressed(new ShootHigh(_shooter));
 
-    new JoystickButton(_primaryController, XboxController.Button.kB.value)
-    .whileHeld(new RunIndexer(_shooter), false);
-
+    //new JoystickButton(_primaryController, XboxController.Button.kB.value)
+    //.whileHeld(new RunIndexer(_shooter), false);
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
       .whenPressed(new IntakeBall(_intake));
     new JoystickButton(_primaryController, XboxController.Button.kX.value)

@@ -11,7 +11,7 @@ public class IntakeBall extends CommandBase {
         this.intake = intake;
         addRequirements(intake);
     }
-
+    
     @Override
     public void initialize() {
         intake.intakeBall();
