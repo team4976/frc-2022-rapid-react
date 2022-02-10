@@ -26,5 +26,6 @@ public class ShooterCommand extends SubsystemBase {
         public boolean ballAtIndexer(){
             return indexSensor.get() ==false;
         }
+        //change
 
 }
