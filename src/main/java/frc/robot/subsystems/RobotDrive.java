@@ -20,17 +20,10 @@ public class RobotDrive extends SubsystemBase {
     new VictorSPX(kDRIVE_LEFT_B_NODE_ID).follow(left);
     new VictorSPX(kDRIVE_RIGHT_B_NODE_ID).follow(right);
   }
-  public void fireGearbox(){
-    gearbox.set(true);
-  }
-
-  public void firentGearbox(){
-    gearbox.set(false);
-  }
   
-
   public void setArcadeDrive(double forward, double rotation) {
 
+    /*
     double output2=0;
     double output=0;
     double per = 0;
@@ -82,6 +75,16 @@ public class RobotDrive extends SubsystemBase {
     else {
       left.set(ControlMode.PercentOutput, (-forward));
     right.set(ControlMode.PercentOutput, (forward));
+    }
+
+    */
+    if (rotation > .2){
+    double steer;
+   steer = rotation*Math.abs(forward*.9);
+
+
+    left.set(ControlMode.PercentOutput, (-forward-steer) );
+    right.set(ControlMode.PercentOutput,(-forward+steer) );
     }
   }
 }
