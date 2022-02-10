@@ -24,6 +24,6 @@ public final class Constants {
     public static int kINDEX_NODE_ID = 46;
     public static int kINTAKE_NODE_ID = 47;
 
-    public static double kSHOOTER_HIGH_SPEED = 0.8;
+    public static double kSHOOTER_HIGH_SPEED = 10000;
     public static double kINTAKE_HIGH_SPEED = 0.7;
 }
