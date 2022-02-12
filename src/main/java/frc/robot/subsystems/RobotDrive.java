@@ -14,7 +14,7 @@ public class RobotDrive extends SubsystemBase {
  
   public final TalonSRX left = new TalonSRX(kDRIVE_LEFT_A_NODE_ID);
   public final TalonSRX right = new TalonSRX(kDRIVE_RIGHT_A_NODE_ID);
-  public final Solenoid gearbox = new Solenoid(10,PneumaticsModuleType.CTREPCM, 5);
+  public final Solenoid gearbox = new Solenoid(kDRIVE_GEARBOX_PNEUMATIC_NODE_ID,PneumaticsModuleType.CTREPCM, kDRIVE_GEARBOX_PNEUMATIC_PORT_ID);
 
   public RobotDrive() {
     new VictorSPX(kDRIVE_LEFT_B_NODE_ID).follow(left);
@@ -22,69 +22,28 @@ public class RobotDrive extends SubsystemBase {
   }
   
   public void setArcadeDrive(double forward, double rotation) {
-
-    /*
-    double output2=0;
-    double output=0;
-    double per = 0;
-    rotation = -rotation;
-
-    if (.1 < Math.abs(rotation)){
-
-    if (rotation > .1){
-     per = Math.abs(forward)*-1*rotation+.1;
-    }
-    else if (rotation < -.1){
-     per = Math.abs(forward)*-1*rotation-.1;
-      }
-
-      output2=-forward;
-      output=forward;
-
-
-      if (rotation > 0 && forward > 0){
-        output2= output2-per;
-      }
-      else if (rotation < 0 && forward < 0){
-        output= output+per;
-      }
-      else if (rotation > 0 && forward < 0){
-        output2 = output2+per;
-      }
-      else if (rotation < 0 && forward > 0){
-        output = output-per;
-      }
-      else if (forward == 0 && rotation != 0){
-       output2 = -rotation;
-       output = -rotation;
-      }
-
-
-
-
-
-
-
-    left.set(ControlMode.PercentOutput, (-output));
-    right.set(ControlMode.PercentOutput, (-output2));
-
-
-    }
-
-   
-    else {
-      left.set(ControlMode.PercentOutput, (-forward));
-    right.set(ControlMode.PercentOutput, (forward));
-    }
-
-    */
     if (rotation > .2){
     double steer;
-   steer = rotation*Math.abs(forward*.9);
+   steer = rotation*Math.abs(forward*kDRIVE_SENSITIVITY_LEVEL);
 
 
     left.set(ControlMode.PercentOutput, (-forward-steer) );
     right.set(ControlMode.PercentOutput,(-forward+steer) );
     }
+  }
+  public void setPrecisionMode(){
+    kDRIVE_SENSITIVITY_LEVEL = (kDRIVE_SENSITIVITY_LEVEL)/2;
+  }
+
+  public void endPrecisionMode(){
+    kDRIVE_SENSITIVITY_LEVEL = (kDRIVE_SENSITIVITY_LEVEL*2);
+  }
+
+  public void setTurboMode(){
+    gearbox.set(true);
+  }
+
+  public void endTurboMode(){
+    gearbox.set(false);
   }
 }

@@ -6,6 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.EngagePrecision;
+import frc.robot.commands.EngageTurbo;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.IntakeIntend;
 import frc.robot.commands.RunIndexer;
@@ -66,6 +68,10 @@ public class RobotContainer {
       .whenPressed(new IntakeBall(_intake));
     new JoystickButton(_primaryController, XboxController.Button.kX.value)
       .whenPressed(new IntakeIntend(_intake));
+    new JoystickButton(_primaryController, XboxController.Button.kLeftBumper.value)
+      .whileHeld(new EngagePrecision(_robotDrive));
+     new JoystickButton(_primaryController, XboxController.Button.kRightBumper.value)
+      .whileHeld(new EngageTurbo(_robotDrive));
   }
 
   /**
