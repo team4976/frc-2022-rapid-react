@@ -20,10 +20,12 @@ public final class Constants {
     public static int kDRIVE_RIGHT_A_NODE_ID = 3;
     public static int kDRIVE_RIGHT_B_NODE_ID = 4;
 
-    public static int kSHOOTER_A_NODE_ID = 45;
+    public static int kSHOOTER_A_NODE_ID = 30;
     public static int kINDEX_NODE_ID = 46;
     public static int kINTAKE_NODE_ID = 47;
 
-    public static double kSHOOTER_HIGH_SPEED = 10000;
+    public static double kSHOOTER_HIGH_SPEED = 10000;//rough estimate of high speed in rpm
+    public static double kSHOOTER_LOW_SPEED = 5000;//estimate of low speed
+    public static double kSHOOTER_EEJECT_SPEED = 2500;
     public static double kINTAKE_HIGH_SPEED = 0.7;
 }

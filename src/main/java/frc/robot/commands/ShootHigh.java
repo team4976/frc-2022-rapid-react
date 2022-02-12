@@ -2,15 +2,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ShooterCommand;
+import frc.robot.subsystems.FlywheelShooter;
 import  frc.robot.commands.*;
 import static frc.robot.Constants.*;
 public class ShootHigh extends CommandBase {
 
-    ShooterCommand shooter;
+    FlywheelShooter shootmotor;
     
-    public ShootHigh(ShooterCommand shooterCommand) {
-        this.shooter = shooterCommand;
+    public ShootHigh(FlywheelShooter shooterCommand) {
+        this.shootmotor = shooterCommand;
         addRequirements(shooterCommand);
         shooterCommand.shooterSpeed(kSHOOTER_HIGH_SPEED);
     }
