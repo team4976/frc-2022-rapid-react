@@ -14,16 +14,13 @@ package frc.robot;
  */
 public final class Constants {
 
-    public static int kDRIVE_LEFT_A_NODE_ID = 0;
-    public static int kDRIVE_LEFT_B_NODE_ID = 1;
+    public static int kDIGITAL_INPUT = 0; // node for the button to stop motor
+    public static int kINTAKE_MOTOR_NODE = 20; // the bottom motor that pushes the bal up
+    public static int kINDEX_NODE = 21; // the top motor (index)
 
-    public static int kDRIVE_RIGHT_A_NODE_ID = 3;
-    public static int kDRIVE_RIGHT_B_NODE_ID = 4;
-
-    public static int kSHOOTER_A_NODE_ID = 45;
-    public static double kSHOOT_lOW_SPEED = 0.2;
-    public static double kSHOOT_HIGH_SPEED = 0.8;
-
-    public static int kINDEX_NODE_ID = 46;
+    public static double kINTAKE_SPEED = 0.4;//Bottom Roller Speed
+    public static double kINDEX_SPEED = 0.6;//Top Roller Speed
+    public static double kINITIAL_SPEED = 0.4;//Speed the motors go while starting
+    public static double kSTOP_SPEED = 0;//Sets the motor speeds to 0
 
 }

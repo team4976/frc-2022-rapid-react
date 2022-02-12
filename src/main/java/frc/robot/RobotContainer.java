@@ -6,13 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.IntakeBall;
-import frc.robot.commands.RunIndexer;
-import frc.robot.commands.ShootHigh;
-import frc.robot.commands.TeleopDrive;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.RobotDrive;
-import frc.robot.subsystems.Shooter;
+import frc.robot.commands.Eject_Balls;
+import frc.robot.commands.Load_Balls;
+import frc.robot.commands.Load_To_Shooter;
+import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -25,12 +22,11 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
 
   // The robot's subsystems and commands are defined here...
-  private final RobotDrive _robotDrive = new RobotDrive();
-  private final Intake _intake = new Intake();
-  private final Shooter shooter = new Shooter();
+
+  private final Elevator elevator = new Elevator();
 
   private final XboxController _primaryController = new XboxController(0);
-  // private final XboxController _secondaryController = new XboxController(1);
+  private final XboxController _secondaryController = new XboxController(1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -38,14 +34,6 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     
-    _robotDrive.setDefaultCommand(
-      new TeleopDrive(
-        _robotDrive, 
-        _primaryController::getLeftX, 
-        _primaryController::getLeftTriggerAxis,
-        _primaryController::getRightTriggerAxis
-        )
-    );
   }
 
   /**
@@ -56,14 +44,14 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(_primaryController, XboxController.Button.kY.value)
-      .whenPressed(new ShootHigh(shooter));
-
-    new JoystickButton(_primaryController, XboxController.Button.kB.value)
-      .whileHeld(new RunIndexer(shooter));
-
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
-      .whenPressed(new IntakeBall(_intake));
+      .whenHeld(new Load_Balls(elevator));
+
+      new JoystickButton(_primaryController, XboxController.Button.kX.value)
+      .whenHeld(new Load_To_Shooter(elevator));
+
+    new JoystickButton(_secondaryController, XboxController.Button.kY.value)
+      .whileHeld(new Eject_Balls(elevator));
   }
 
   /**
