@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Shooter extends SubsystemBase {
 
+    public static final String shooterSpeed = null;
     TalonSRX shooter = new TalonSRX(KSHOOTER_NODE_ID); 
     TalonSRX indexMotor =new TalonSRX(kINDEX_NODE_ID); 
     DigitalInput indexSensor=new DigitalInput(1);
