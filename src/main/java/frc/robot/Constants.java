@@ -19,4 +19,14 @@ public final class Constants {
 
     public static int kDRIVE_RIGHT_A_NODE_ID = 3;
     public static int kDRIVE_RIGHT_B_NODE_ID = 4;
+
+    public static int kSHOOTER_A_NODE_ID = 45; 
+    public static double kCLIMBER_UP_SPEED = 0.75;
+    public static double kCLIMBER_DOWN_SPEED = -0.75;
+    public static double kCLIMBER_STOP = 0;
+
+    public static double kSHOOTER_LOW_SPEEED = 0.2;
+    public static double kSHOOTER_HIGH_SPEEED = 0.8;
+    public static int kINDEX_NODE_ID = 0; 
+    public static double kFALCON_UNITS_TO_RPM = 0.001;
 }
