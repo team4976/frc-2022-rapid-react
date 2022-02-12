@@ -1,26 +1,26 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Intake_Self;
 
-public class IntakeBall extends CommandBase {
+public class RemoveBall extends CommandBase {
     
-    private Intake intake;
+    private Intake_Self remove;
 
-    public IntakeBall(Intake _intake) {
-        this.intake = _intake;
-        addRequirements(_intake);
+    public RemoveBall(Intake_Self remove) {
+        this.remove = remove;
+        addRequirements(remove);
     }
 
     @Override
     public void initialize() {
-        intake.intakeBall();
+        remove.removeBall();
         super.initialize();
     }
 
     @Override
     public void end(boolean interrupted) {
-        intake.stop();
+        remove.stop();
         super.end(interrupted);
     }
 
