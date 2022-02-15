@@ -11,11 +11,11 @@ public class SpoolLow extends CommandBase {
     public SpoolLow(FlywheelShooter FShooter) {
         this.shootmotor = FShooter;
         addRequirements(FShooter);
-        FShooter.shooterSpeed(kSHOOTER_LOW_SPEED);
     
 }
     @Override
     public void initialize(){
+    shootmotor.shooterSpeed(kSHOOTER_LOW_SPEED);
 
 
     super.initialize();

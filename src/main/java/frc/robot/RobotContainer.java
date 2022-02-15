@@ -7,11 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
-import frc.robot.commands.EjectBall;
 import frc.robot.commands.TeleopDrive;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.RobotDrive;
 
@@ -25,7 +22,6 @@ public class RobotContainer {
 
   // The robot's subsystems and commands are defined here...
   private final RobotDrive _robotDrive = new RobotDrive();
-  private final Intake _intake = new Intake();
   private final FlywheelShooter _shooter = new FlywheelShooter();
 
   private final XboxController _primaryController = new XboxController(0);

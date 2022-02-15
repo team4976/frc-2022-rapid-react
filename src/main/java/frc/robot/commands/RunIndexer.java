@@ -5,7 +5,7 @@ import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.ShooterCommand;
 
 public class RunIndexer extends CommandBase {
-    private ShooterCommand shooter;
+    private FlywheelShooter shooter;
 
     public RunIndexer(FlywheelShooter _shooter){
         this.shooter = _shooter;
