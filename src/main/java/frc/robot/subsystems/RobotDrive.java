@@ -22,18 +22,22 @@ public class RobotDrive extends SubsystemBase {
   }
   double steer = 0.0;
   public void setArcadeDrive(double forward, double rotation) {
-    if (Math.abs(rotation) > .2){
+   // if (Math.abs(rotation) > .2){
    steer = rotation*Math.abs(forward*kDRIVE_SENSITIVITY_LEVEL);
-    }
-    left.set(ControlMode.PercentOutput, (-forward-steer) );
-    right.set(ControlMode.PercentOutput,(-forward+steer) );
+   left.set(ControlMode.PercentOutput, (-forward-steer) );
+   right.set(ControlMode.PercentOutput,(forward-steer) );
+    //}
+    /*else{
+      left.set(ControlMode.PercentOutput, forward);
+      right.set(ControlMode.PercentOutput, -forward);
+    }*/
   }
   public void setPrecisionMode(){
     kDRIVE_SENSITIVITY_LEVEL = (kDRIVE_SENSITIVITY_LEVEL)/2;
   }
 
   public void endPrecisionMode(){
-    kDRIVE_SENSITIVITY_LEVEL = (kDRIVE_SENSITIVITY_LEVEL*2);
+    kDRIVE_SENSITIVITY_LEVEL = (kDRIVE_SENSITIVITY_LEVEL)/2;
   }
 
   public void setTurboMode(){
