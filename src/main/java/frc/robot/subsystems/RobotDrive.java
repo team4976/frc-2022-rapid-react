@@ -20,16 +20,13 @@ public class RobotDrive extends SubsystemBase {
     new VictorSPX(kDRIVE_LEFT_B_NODE_ID).follow(left);
     new VictorSPX(kDRIVE_RIGHT_B_NODE_ID).follow(right);
   }
-  
+  double steer = 0.0;
   public void setArcadeDrive(double forward, double rotation) {
-    if (rotation > .2){
-    double steer;
+    if (Math.abs(rotation) > .2){
    steer = rotation*Math.abs(forward*kDRIVE_SENSITIVITY_LEVEL);
-
-
+    }
     left.set(ControlMode.PercentOutput, (-forward-steer) );
     right.set(ControlMode.PercentOutput,(-forward+steer) );
-    }
   }
   public void setPrecisionMode(){
     kDRIVE_SENSITIVITY_LEVEL = (kDRIVE_SENSITIVITY_LEVEL)/2;

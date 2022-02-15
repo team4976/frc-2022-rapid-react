@@ -2,8 +2,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.RobotDrive;
-public class EngagePrecision extends CommandBase {
-    private RobotDrive robotDrive;
+//public class EngagePrecision extends CommandBase {
+   /* private RobotDrive robotDrive;
 
     public EngagePrecision(RobotDrive robotDrive){
         this.robotDrive = robotDrive;
@@ -22,3 +22,4 @@ public class EngagePrecision extends CommandBase {
         robotDrive.endPrecisionMode();
     }
 }
+*/
