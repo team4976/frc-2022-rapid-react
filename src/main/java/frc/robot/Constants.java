@@ -15,8 +15,8 @@ package frc.robot;
 public final class Constants {
 
     public static int kDIGITAL_INPUT = 0; // node for the button to stop motor
-    public static int kINTAKE_MOTOR_NODE = 20; // the bottom motor that pushes the bal up
-    public static int kINDEX_NODE = 21; // the top motor (index)
+    public static int kINTAKE_MOTOR_NODE = 20; // the bottom motor that pushes the ball up, port 20
+    public static int kINDEX_NODE = 21; // the top motor (index) port 21
 
     public static double kINTAKE_SPEED = 0.4;//Bottom Roller Speed
     public static double kINDEX_SPEED = 0.6;//Top Roller Speed

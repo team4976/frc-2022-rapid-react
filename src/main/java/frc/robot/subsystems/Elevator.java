@@ -2,18 +2,17 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-
-
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import static frc.robot.Constants.*;
 
 public class Elevator extends SubsystemBase {
 
-    TalonFX indexer = new TalonFX(kINDEX_NODE); // first motor to come in contact with the ball (furthest away from the center of the module)
-    TalonFX intakeRoller = new TalonFX(kINTAKE_MOTOR_NODE); // first motor to come in contact with the ball (furthest away from the center of the module)
+    VictorSPX indexer = new VictorSPX(kINDEX_NODE); // first motor to come in contact with the ball (furthest away from the center of the module)
+    VictorSPX intakeRoller = new VictorSPX(kINTAKE_MOTOR_NODE); // first motor to come in contact with the ball (furthest away from the center of the module)
     DigitalInput indexSensor = new DigitalInput(kDIGITAL_INPUT);//Sensor conection placement thingie
+    
 
     //Sets Bottom Motors Speed
     public void setRollerSpeed(double speed) {

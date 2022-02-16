@@ -11,6 +11,7 @@ This Code runs while Intake is on
 public class Load_Balls extends CommandBase{
     
     private Elevator elevator;
+    boolean stat = false;
 
     public Load_Balls(Elevator elevator){
         this.elevator = elevator;
@@ -32,6 +33,13 @@ public class Load_Balls extends CommandBase{
         if (elevator.ballAtIndexer()){
             elevator.setIndexSpeed(kSTOP_SPEED);
         }
+        if(stat){
+            elevator.setIndexSpeed(kSTOP_SPEED);
+        }
+        else{}
+
+        System.out.println("1");
+        System.out.println(elevator.ballAtIndexer());
     }
 
     @Override

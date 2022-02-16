@@ -26,7 +26,7 @@ public class RobotContainer {
   private final Elevator elevator = new Elevator();
 
   private final XboxController _primaryController = new XboxController(0);
-  private final XboxController _secondaryController = new XboxController(1);
+  //private final XboxController _secondaryController = new XboxController(1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -45,13 +45,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
-      .whenHeld(new Load_Balls(elevator));
+      .toggleWhenPressed(new Load_Balls(elevator));
 
-      new JoystickButton(_primaryController, XboxController.Button.kX.value)
+    new JoystickButton(_primaryController, XboxController.Button.kX.value)
       .whenHeld(new Load_To_Shooter(elevator));
 
-    new JoystickButton(_secondaryController, XboxController.Button.kY.value)
-      .whileHeld(new Eject_Balls(elevator));
+    new JoystickButton(_primaryController, XboxController.Button.kY.value)
+      .whenHeld(new Eject_Balls(elevator));
   }
 
   /**
