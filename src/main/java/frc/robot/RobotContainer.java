@@ -6,13 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.IntakeBall;
-import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
+import frc.robot.commands.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-
+import frc.robot.subsystems.*;
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -24,9 +23,10 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RobotDrive _robotDrive = new RobotDrive();
   private final Intake _intake = new Intake();
-
+  
+  
   private final XboxController _primaryController = new XboxController(0);
-  // private final XboxController _secondaryController = new XboxController(1);
+  private final XboxController _secondaryController = new XboxController(1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -54,7 +54,32 @@ public class RobotContainer {
    
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
       .whenPressed(new IntakeBall(_intake));
-  }
+
+    new JoystickButton(_primaryController, XboxController.Button.kA.value)
+      .whenPressed(new BottomElevatorRun());
+
+    new JoystickButton(_primaryController, XboxController.Button.kB.value)
+      .whenPressed(new stopIntake(_intake));
+
+    new JoystickButton(_secondaryController, XboxController.Button.kB.value)
+      .whenPressed(new stopIntake(_intake));
+
+    new JoystickButton(_primaryController, XboxController.Button.kB.value)
+      .whenPressed(new BottomElevatorStop());
+
+    new JoystickButton(_secondaryController, XboxController.Button.kY.value)
+      .whenPressed(new ejectBall(_intake));
+
+    new JoystickButton(_primaryController, XboxController.Button.kB.value)
+      .whenPressed(new BottomElevatorEject());
+
+    new JoystickButton(_secondaryController, XboxController.Button.kLeftBumper.value)
+      .whenPressed(new extendBumper(_intake));
+
+    new JoystickButton(_secondaryController, XboxController.Button.kRightBumper.value)
+      .whenPressed(new retractBumper(_intake));
+    
+ }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
