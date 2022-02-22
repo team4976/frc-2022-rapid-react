@@ -6,8 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.HorizontalAim;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.TeleopDrive;
+import frc.robot.subsystems.AutoAim;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,9 +26,10 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RobotDrive _robotDrive = new RobotDrive();
   private final Intake _intake = new Intake();
+  private final AutoAim _autoaim = new AutoAim();
 
   private final XboxController _primaryController = new XboxController(0);
-  // private final XboxController _secondaryController = new XboxController(1);
+  private final XboxController _secondaryController = new XboxController(1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -54,6 +57,8 @@ public class RobotContainer {
    
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
       .whenPressed(new IntakeBall(_intake));
+    new JoystickButton(_primaryController, XboxController.Button.kLeftBumper.value)
+      .whileHeld(new HorizontalAim(_autoaim));
   }
 
   /**
