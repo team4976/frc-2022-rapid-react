@@ -8,13 +8,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Intake;
 
-public class IntakeBall extends CommandBase {
-    
-    Intake intake;
+public class stopIntake extends CommandBase{
+     Intake intake;
+
+    Intake stopIntake;
     public TalonFX IntakeBall = new TalonFX(31);
     public VictorSPX BottomElevator = new VictorSPX(20);
 
-    public IntakeBall(Intake intake) {
+    public stopIntake(Intake intake) {
         this.intake = intake;
         addRequirements(intake);
     }
@@ -22,7 +23,8 @@ public class IntakeBall extends CommandBase {
 @Override
     public void initialize(){
        super.initialize();
-       IntakeBall.set(ControlMode.PercentOutput,(Constants.kINTAKE_RUN));
-      // BottomElevator.set(ControlMode.PercentOutput, (Constants.kBOTTOM_ELEVATOR));
+       IntakeBall.set(ControlMode.PercentOutput,(Constants.kSTOP_INTAKE));
+       BottomElevator.set(ControlMode.PercentOutput,(Constants.kBOTTOM_ELEVATOR_STOP));
  }
+    
 }

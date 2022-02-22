@@ -22,11 +22,22 @@ public final class Constants {
 
     public static int kSHOOTER_A_NODE_ID = 45; 
     public static double kCLIMBER_UP_SPEED = 0.75;
+
     public static double kCLIMBER_DOWN_SPEED = -0.75;
     public static double kCLIMBER_STOP = 0;
+
+    public static double kINTAKE_RUN = 0.75;
+    public static double kSTOP_INTAKE = 0;
+    public static double kEJECT_INTAKE = -0.75;
+
+    public static double kBOTTOM_ELEVATOR = 0.5;
+    public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
+    public static double kBOTTOM_ELEVATOR_STOP = 0;
 
     public static double kSHOOTER_LOW_SPEEED = 0.2;
     public static double kSHOOTER_HIGH_SPEEED = 0.8;
     public static int kINDEX_NODE_ID = 0; 
+    
     public static double kFALCON_UNITS_TO_RPM = 0.001;
+      //Has Passmore done speed?
 }

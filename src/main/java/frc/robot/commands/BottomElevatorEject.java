@@ -12,7 +12,7 @@ public class BottomElevatorEject extends CommandBase {
     public VictorSPX BottomElevator = new VictorSPX(20);
 
 Intake intake;
-public void BottomElevatorStop(Intake intake) {
+public void BottomElevatorEject(Intake intake) {
     this.intake = intake;
     addRequirements(intake);
 }
