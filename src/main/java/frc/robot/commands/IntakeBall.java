@@ -23,6 +23,6 @@ public class IntakeBall extends CommandBase {
     public void initialize(){
        super.initialize();
        IntakeBall.set(ControlMode.PercentOutput,(Constants.kINTAKE_RUN));
-      // BottomElevator.set(ControlMode.PercentOutput, (Constants.kBOTTOM_ELEVATOR));
+       BottomElevator.set(ControlMode.PercentOutput, (Constants.kBOTTOM_ELEVATOR));
  }
 }

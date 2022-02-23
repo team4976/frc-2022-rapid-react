@@ -26,7 +26,7 @@ Intake intake;
     public void initialize(){
        super.initialize();
        IntakeBall.set(ControlMode.PercentOutput,(Constants.kEJECT_INTAKE));
-       //BottomElevator.set(ControlMode.PercentOutput,(Constants.kBOTTOM_ELEVATOR_EJECT));
+       BottomElevator.set(ControlMode.PercentOutput,(Constants.kBOTTOM_ELEVATOR_EJECT));
 
  }
 }

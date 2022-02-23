@@ -55,8 +55,8 @@ public class RobotContainer {
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
       .whenPressed(new IntakeBall(_intake));
 
-    new JoystickButton(_primaryController, XboxController.Button.kA.value)
-      .whenPressed(new BottomElevatorRun());
+   // new JoystickButton(_primaryController, XboxController.Button.kA.value)
+      //.whenPressed(new BottomElevatorRun(_intake));
 
     new JoystickButton(_primaryController, XboxController.Button.kB.value)
       .whenPressed(new stopIntake(_intake));
@@ -64,14 +64,14 @@ public class RobotContainer {
     new JoystickButton(_secondaryController, XboxController.Button.kB.value)
       .whenPressed(new stopIntake(_intake));
 
-    new JoystickButton(_primaryController, XboxController.Button.kB.value)
-      .whenPressed(new BottomElevatorStop());
+   // new JoystickButton(_primaryController, XboxController.Button.kB.value)
+     // .whenPressed(new BottomElevatorStop(_intake));
 
     new JoystickButton(_secondaryController, XboxController.Button.kY.value)
       .whenPressed(new ejectBall(_intake));
 
-    new JoystickButton(_primaryController, XboxController.Button.kB.value)
-      .whenPressed(new BottomElevatorEject());
+   // new JoystickButton(_primaryController, XboxController.Button.kB.value)
+      //.whenPressed(new BottomElevatorEject(_intake));
 
     new JoystickButton(_secondaryController, XboxController.Button.kLeftBumper.value)
       .whenPressed(new extendBumper(_intake));

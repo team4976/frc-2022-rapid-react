@@ -11,7 +11,7 @@ import frc.robot.subsystems.Intake;
 public class extendBumper extends CommandBase {
     
     Intake intake;
-    Solenoid piston = new Solenoid(10, PneumaticsModuleType.CTREPCM, 98);
+    Solenoid piston = new Solenoid(40, PneumaticsModuleType.CTREPCM, 4);
     Intake extendBumper;
      
     public extendBumper(Intake intake){

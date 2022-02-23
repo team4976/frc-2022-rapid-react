@@ -15,32 +15,23 @@ public class Intake extends SubsystemBase {
 
     VictorSPX BottomElevator = new VictorSPX(20);
     TalonSRX intakeMotor = new TalonSRX(31);
-    Solenoid piston = new Solenoid(10, PneumaticsModuleType.CTREPCM, 98);
+    Solenoid piston = new Solenoid(40, PneumaticsModuleType.CTREPCM, 4);
 
     public void intakeBall() {
         intakeMotor.set(ControlMode.PercentOutput, 0.7);
+        BottomElevator.set(ControlMode.PercentOutput, 0.5);
     }
 
     public void ejectBall() {
         intakeMotor.set(ControlMode.PercentOutput, -0.7);
+        BottomElevator.set(ControlMode.PercentOutput, -0.5);
     }
 
     public void stopIntake() {
         intakeMotor.set(ControlMode.PercentOutput, 0);
-      //  BottomElevator.set(ControlMode.PercentOutput,0);
+        BottomElevator.set(ControlMode.PercentOutput,0);
     }
     
-    public void BottomElevatorRun(){
-        BottomElevator.set(ControlMode. PercentOutput, 0.5);
-    }
-
-    public void BottomElevatorEject(){
-        BottomElevator.set(ControlMode. PercentOutput, -0.5);
-    }
-
-    public void BottomElevatorStop(){
-        BottomElevator.set(ControlMode.PercentOutput, 0.5);
-    }
 
     public void extendBumper(){
         piston.set(true);
