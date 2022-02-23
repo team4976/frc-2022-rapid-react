@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Eject_Balls;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
 import frc.robot.commands.EngagePrecision;
 import frc.robot.commands.EngageTurbo;
@@ -16,6 +17,8 @@ import frc.robot.commands.Load_Balls;
 import frc.robot.commands.Load_To_Shooter;
 import frc.robot.commands.RunIndexer;
 import frc.robot.commands.ShootHigh;
+import frc.robot.commands.SpoolHigh;
+import frc.robot.commands.SpoolLow;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.commands.ejectBall;
 import frc.robot.commands.extendBumper;
@@ -26,6 +29,8 @@ import frc.robot.subsystems.RobotDrive;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
+
 import static frc.robot.Constants.*;
 
 /**
@@ -39,7 +44,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RobotDrive _robotDrive = new RobotDrive();
  // private final Intake _intake = new Intake();
-  private final Shooter _shooter = new Shooter();
+  private final FlywheelShooter _shooter = new FlywheelShooter();
   private final Elevator _elevator = new Elevator();
   private final Intake _intake = new Intake();
   boolean flag = false;
@@ -99,6 +104,10 @@ public class RobotContainer {
   new JoystickButton(_secondaryController, XboxController.Button.kRightBumper.value)
       .whenPressed(new retractBumper(_intake));
 
+      new POVButton(_secondaryController, 0)
+      .toggleWhenPressed(new SpoolHigh(_shooter));
+      new POVButton(_secondaryController, 180)
+      .toggleWhenPressed(new SpoolLow(_shooter));
 
 
    //new JoystickButton(_primaryController, XboxController.Button.kY.value)

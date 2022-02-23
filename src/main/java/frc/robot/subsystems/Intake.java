@@ -20,16 +20,19 @@ public class Intake extends SubsystemBase {
     public void intakeBall() {
         intakeMotor.set(ControlMode.PercentOutput, 0.7);
         BottomElevator.set(ControlMode.PercentOutput, 0.5);
+        piston.set(true);
     }
 
     public void ejectBall() {
         intakeMotor.set(ControlMode.PercentOutput, -0.7);
         BottomElevator.set(ControlMode.PercentOutput, -0.5);
+        piston.set(true);
     }
 
     public void stopIntake() {
         intakeMotor.set(ControlMode.PercentOutput, 0);
         BottomElevator.set(ControlMode.PercentOutput,0);
+        piston.set(false);
     }
     
 

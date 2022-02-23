@@ -24,7 +24,7 @@ public final class Constants {
     public static int kDRIVE_GEARBOX_PNEUMATIC_PORT_ID = 1;
     public static double kDRIVE_SENSITIVITY_LEVEL = 0.9;
 
-    public static int kSHOOTER_A_NODE_ID = 52;
+    public static int kSHOOTER_A_NODE_ID = 30;
     public static double kSHOOT_LOW_SPEED = 0.2;
     public static double kSHOOT_HIGH_SPEED = 0.8;
 
@@ -60,9 +60,11 @@ public final class Constants {
     public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
     public static double kBOTTOM_ELEVATOR_STOP = 0;
 
-    public static double kSHOOTER_LOW_SPEEED = 0.2;
-    public static double kSHOOTER_HIGH_SPEEED = 0.8;
+    public static double kSHOOTER_LOW_SPEED = 0.1;
+    public static double kSHOOTER_HIGH_SPEED = 0.5;
     public static int kINDEX_NODE_ID = 0; 
     
     public static double kFALCON_UNITS_TO_RPM = 0.001;
+
+    
 }
