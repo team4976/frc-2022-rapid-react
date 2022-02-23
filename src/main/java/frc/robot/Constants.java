@@ -26,7 +26,11 @@ public final class Constants {
 
     public static int kMODULE_NODE_ID=10; 
     public static int kCHANCE_NODE_ID =98; 
-    public static int kELEVATOR_BOTTOM_NODE_ID =20; 
+    public static int kELEVATOR_BOTTOM_NODE_ID =20;  
+
+    public static double kBOTTOM_ELEVATOR = 0.5;
+    public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
+    public static double kBOTTOM_ELEVATOR_STOP = 0;
 
     public static double kSHOOT_HIGH_SPEED = 0.8; 
     public static double KINTAKE_HIGH_SPEED =0.7; 

@@ -13,6 +13,7 @@ public class Intake extends SubsystemBase {
 
     private static final int module =10;
     private static final int channel =98;
+    private static final TalonSRX BottomElevator = null;
 
     TalonSRX intakeMotor = new TalonSRX(21); 
     Solenoid piston = new Solenoid(module, PneumaticsModuleType.CTREPCM, channel);
@@ -33,6 +34,25 @@ VictorSPX bottomelevator = new VictorSPX(kELEVATOR_BOTTOM_NODE_ID);
     public void stop() {
         intakeMotor.set(ControlMode.PercentOutput, 0); 
         bottomelevator.set(ControlMode.PercentOutput,0);
+        piston.set(false); 
+    } 
+    public void BottomElevatorRun(){
+        BottomElevator.set(ControlMode. PercentOutput, 0.5);
+    }
+
+    public void BottomElevatorEject(){
+        BottomElevator.set(ControlMode. PercentOutput, -0.5);
+    }
+
+    public void BottomElevatorStop(){
+        BottomElevator.set(ControlMode.PercentOutput, 0.5);
+    }
+
+    public void extendBumper(){
+        piston.set(true);
+    }
+    
+    public void retractBumper(){
         piston.set(false); 
     }
 
