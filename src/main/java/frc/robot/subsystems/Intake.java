@@ -2,43 +2,48 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
-    
-    TalonSRX intakeMotor = new TalonSRX(50);
-    Solenoid pneumatic = new Solenoid(10,PneumaticsModuleType.CTREPCM,6);
-    Compressor compressor = new Compressor(10, PneumaticsModuleType.CTREPCM);
-    
-    public void compressorCheck() {
-        compressor.enableDigital();
-    }
-    
+
+    //private static final int module =10;
+    //private static final int channel =98;
+
+    VictorSPX BottomElevator = new VictorSPX(20);
+    TalonSRX intakeMotor = new TalonSRX(31);
+    Solenoid piston = new Solenoid(40, PneumaticsModuleType.CTREPCM, 4);
+
     public void intakeBall() {
-        intakeMotor.set(ControlMode.PercentOutput, -0.8);
-    }
-
-    public void extendSolenoid(){
-        pneumatic.set(true);
-    }
-
-    public void intendSolenoid(){
-        pneumatic.set(false);
+        intakeMotor.set(ControlMode.PercentOutput, 0.7);
+        BottomElevator.set(ControlMode.PercentOutput, 0.5);
     }
 
     public void ejectBall() {
-        intakeMotor.set(ControlMode.PercentOutput, 0.8);
+        intakeMotor.set(ControlMode.PercentOutput, -0.7);
+        BottomElevator.set(ControlMode.PercentOutput, -0.5);
     }
 
-    public void stop() {
+    public void stopIntake() {
         intakeMotor.set(ControlMode.PercentOutput, 0);
+        BottomElevator.set(ControlMode.PercentOutput,0);
+    }
+    
+
+    public void extendBumper(){
+        piston.set(true);
+    }
+    
+    public void retractBumper(){
+        piston.set(false); 
     }
 
     public boolean isBallStored() {
+        ///
+
         return false;
     }
 }
