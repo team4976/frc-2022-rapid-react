@@ -33,13 +33,16 @@ public class Load_Balls extends CommandBase{
         if (elevator.ballAtIndexer()){
             elevator.setIndexSpeed(kSTOP_SPEED);
         }
-        if(stat){
+        /*if(stat){
             elevator.setIndexSpeed(kSTOP_SPEED);
         }
-        else{}
+        */
+        else{
+            elevator.setIndexSpeed(kINDEX_SPEED);
+        }
 
-        System.out.println("1");
-        System.out.println(elevator.ballAtIndexer());
+        //System.out.println("1");
+        //System.out.println(elevator.ballAtIndexer());
     }
 
     @Override

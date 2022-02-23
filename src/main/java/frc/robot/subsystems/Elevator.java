@@ -9,9 +9,9 @@ import static frc.robot.Constants.*;
 
 public class Elevator extends SubsystemBase {
 
-    VictorSPX indexer = new VictorSPX(kINDEX_NODE); // first motor to come in contact with the ball (furthest away from the center of the module)
-    VictorSPX intakeRoller = new VictorSPX(kINTAKE_MOTOR_NODE); // first motor to come in contact with the ball (furthest away from the center of the module)
-    DigitalInput indexSensor = new DigitalInput(kDIGITAL_INPUT);//Sensor conection placement thingie
+    VictorSPX indexer = new VictorSPX(kINDEX_NODE); // Second motor to come in contact with the ball
+    VictorSPX intakeRoller = new VictorSPX(kINTAKE_MOTOR_NODE); // First motor to come in contact with the ball (furthest away from the center of the module)
+    DigitalInput indexSensor = new DigitalInput(kDIGITAL_INPUT); //Sensor conection placement thingie
     
 
     //Sets Bottom Motors Speed
