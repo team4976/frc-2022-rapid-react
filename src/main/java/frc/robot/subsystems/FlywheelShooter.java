@@ -10,7 +10,8 @@ public class FlywheelShooter extends SubsystemBase {
     public TalonFX shootmotor = new TalonFX(kSHOOTER_A_NODE_ID);
 
     public void shooterSpeed(double speed) {
-        shootmotor.set(ControlMode.Velocity,speed);
+        //shootmotor.set(ControlMode.Velocity,speed);
+        shootmotor.set(ControlMode.PercentOutput, speed);
     }
     
 }

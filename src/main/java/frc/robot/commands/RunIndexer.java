@@ -19,6 +19,6 @@ public class RunIndexer extends CommandBase {
     
     @Override
     public void initialize() {
-        shooter.setIndexerSpeed(1);
+    //    shooter.setIndexerSpeed(1);
     }
 }

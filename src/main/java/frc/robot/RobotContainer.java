@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.RobotDrive;
+import frc.robot.commands.SpoolHigh;
+import frc.robot.commands.SpoolLow;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -50,21 +53,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new POVButton(_secondaryController, 0)
-    .toggleWhenPressed(SpoolHigh(_shooter));
-    new POVButton(_secondaryController, 180)
-    .toggleWhenPressed(SpoolLow(_shooter));
+    new POVButton(_primaryController, 0)
+    .toggleWhenPressed(new SpoolHigh(_shooter));
+    new POVButton(_primaryController, 180)
+    .toggleWhenPressed(new SpoolLow(_shooter));
     //new JoystickButton(_secondaryController, XboxController.Button.kY.value)
     //.whileHeld(new EjectBall(_shooter));
-  }
-
-
-  private Command SpoolHigh(FlywheelShooter _shooter) {
-    return null;
-  }
-
-  private Command SpoolLow(FlywheelShooter _shooter) {
-    return null;
   }
 
   /**
