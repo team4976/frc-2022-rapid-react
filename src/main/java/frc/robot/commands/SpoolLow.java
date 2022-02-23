@@ -24,4 +24,8 @@ public class SpoolLow extends CommandBase {
     public boolean isFinished() {
         return false;
 }
+@Override
+    public void end(boolean interrupted) {
+        shootmotor.shooterSpeed(0);
+    }
 }

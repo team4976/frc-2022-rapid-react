@@ -15,12 +15,16 @@ public class SpoolHigh extends CommandBase {
 
     @Override
     public void initialize(){
-    shootmotor.shooterSpeed(kSHOOTER_LOW_SPEED);
+    shootmotor.shooterSpeed(kSHOOTER_HIGH_SPEED);
 
     super.initialize();
 }
 @Override
     public boolean isFinished() {
         return false;
+    }
+    @Override
+    public void end(boolean interrupted) {
+        shootmotor.shooterSpeed(0);
     }
 }

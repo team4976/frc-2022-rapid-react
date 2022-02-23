@@ -53,9 +53,9 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new POVButton(_primaryController, 0)
+    new POVButton(_secondaryController, 0)
     .toggleWhenPressed(new SpoolHigh(_shooter));
-    new POVButton(_primaryController, 180)
+    new POVButton(_secondaryController, 180)
     .toggleWhenPressed(new SpoolLow(_shooter));
     //new JoystickButton(_secondaryController, XboxController.Button.kY.value)
     //.whileHeld(new EjectBall(_shooter));
