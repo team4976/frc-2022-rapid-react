@@ -23,8 +23,7 @@ public class stopIntake extends CommandBase{
 @Override
     public void initialize(){
        super.initialize();
-       IntakeBall.set(ControlMode.PercentOutput,(Constants.kSTOP_INTAKE));
-       BottomElevator.set(ControlMode.PercentOutput,(Constants.kBOTTOM_ELEVATOR_STOP));
+       intake.stopIntake();
  }
     
 }

@@ -21,7 +21,7 @@ public final class Constants {
     public static int kDRIVE_RIGHT_B_NODE_ID = 46;
 
     public static int kDRIVE_GEARBOX_PNEUMATIC_NODE_ID = 40;
-    public static int kDRIVE_GEARBOX_PNEUMATIC_PORT_ID = 4;
+    public static int kDRIVE_GEARBOX_PNEUMATIC_PORT_ID = 1;
     public static double kDRIVE_SENSITIVITY_LEVEL = 0.9;
 
     public static int kSHOOTER_A_NODE_ID = 52;

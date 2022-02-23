@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
@@ -14,7 +14,7 @@ public class Intake extends SubsystemBase {
     //private static final int channel =98;
 
     VictorSPX BottomElevator = new VictorSPX(20);
-    TalonSRX intakeMotor = new TalonSRX(31);
+    TalonFX intakeMotor = new TalonFX(31);
     Solenoid piston = new Solenoid(40, PneumaticsModuleType.CTREPCM, 4);
 
     public void intakeBall() {
@@ -39,11 +39,5 @@ public class Intake extends SubsystemBase {
     
     public void retractBumper(){
         piston.set(false); 
-    }
-
-    public boolean isBallStored() {
-        ///
-
-        return false;
     }
 }

@@ -11,8 +11,6 @@ import frc.robot.subsystems.Intake;
 public class IntakeBall extends CommandBase {
     
     Intake intake;
-    public TalonFX IntakeBall = new TalonFX(31);
-    public VictorSPX BottomElevator = new VictorSPX(20);
 
     public IntakeBall(Intake intake) {
         this.intake = intake;
@@ -22,7 +20,6 @@ public class IntakeBall extends CommandBase {
 @Override
     public void initialize(){
        super.initialize();
-       IntakeBall.set(ControlMode.PercentOutput,(Constants.kINTAKE_RUN));
-       BottomElevator.set(ControlMode.PercentOutput, (Constants.kBOTTOM_ELEVATOR));
+       intake.intakeBall();
  }
 }

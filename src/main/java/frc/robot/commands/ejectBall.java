@@ -14,8 +14,6 @@ public class ejectBall extends CommandBase{
 Intake intake;
 
     Intake stopIntake;
-    public TalonFX IntakeBall = new TalonFX(31);
-    public VictorSPX BottomElevator = new VictorSPX(20);
 
     public ejectBall(Intake intake) {
         this.intake = intake;
@@ -25,8 +23,7 @@ Intake intake;
 @Override
     public void initialize(){
        super.initialize();
-       IntakeBall.set(ControlMode.PercentOutput,(Constants.kEJECT_INTAKE));
-       BottomElevator.set(ControlMode.PercentOutput,(Constants.kBOTTOM_ELEVATOR_EJECT));
+      intake.ejectBall();
 
  }
 }

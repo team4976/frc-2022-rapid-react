@@ -87,6 +87,9 @@ public class RobotContainer {
   new JoystickButton(_primaryController, XboxController.Button.kB.value)
     .whenPressed(new stopIntake(_intake));
 
+ new JoystickButton(_secondaryController, XboxController.Button.kB.value)
+   .whenPressed(new stopIntake(_intake));
+
   new JoystickButton(_secondaryController, XboxController.Button.kY.value)
       .whenPressed(new ejectBall(_intake));
 
