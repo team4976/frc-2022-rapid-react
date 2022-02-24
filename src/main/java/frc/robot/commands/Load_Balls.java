@@ -36,7 +36,7 @@ public class Load_Balls extends CommandBase{
        /* if(stat){
             elevator.setIndexSpeed(kSTOP_SPEED);
         }*/
-        else{
+        else if (!(elevator.ballAtIndexer())){
             elevator.setIndexSpeed(kINDEX_SPEED);
         }
     }
