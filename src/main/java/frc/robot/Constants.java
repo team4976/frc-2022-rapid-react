@@ -20,7 +20,7 @@ public final class Constants {
     public static int kDRIVE_RIGHT_A_NODE_ID = 45;
     public static int kDRIVE_RIGHT_B_NODE_ID = 46;
 
-    public static int kDRIVE_GEARBOX_PNEUMATIC_NODE_ID = 40;
+    public static int kDRIVE_PCM_NODE_ID = 40;
     public static int kDRIVE_GEARBOX_PNEUMATIC_PORT_ID = 1;
     public static double kDRIVE_SENSITIVITY_LEVEL = 0.9;
 
@@ -62,9 +62,16 @@ public final class Constants {
 
     public static double kSHOOTER_LOW_SPEED = 0.1;
     public static double kSHOOTER_HIGH_SPEED = 0.5;
-    public static int kINDEX_NODE_ID = 0; 
+    public static int kINDEX_NODE_ID = 4; 
     
     public static double kFALCON_UNITS_TO_RPM = 0.001;
+
+    //Climb Code
+    public static int kCLIMBER_MODLE_A_NODE_ID=40;
+    public static int kCLIMBER_CHANNEL_A_NODE_ID=7;
+
+    public static int kCLIMBER_LEFT_A_NODE_ID=51;
+    public static int kCLIMBER_RIGHT_A_NODE_ID=50;
 
     
 }

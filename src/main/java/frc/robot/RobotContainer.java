@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Eject_Balls;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
@@ -22,6 +23,7 @@ import frc.robot.commands.SpoolLow;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.commands.ejectBall;
 import frc.robot.commands.extendBumper;
+import frc.robot.commands.extendarm;
 import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
 //import frc.robot.subsystems.Intake;
@@ -47,6 +49,7 @@ public class RobotContainer {
   private final FlywheelShooter _shooter = new FlywheelShooter();
   private final Elevator _elevator = new Elevator();
   private final Intake _intake = new Intake();
+  private final Climber _climb = new Climber();
   boolean flag = false;
 
   private final XboxController _primaryController = new XboxController(0);
@@ -64,6 +67,14 @@ public class RobotContainer {
         _primaryController::getLeftX, 
         _primaryController::getLeftTriggerAxis,
         _primaryController::getRightTriggerAxis
+        )
+    );
+
+    _climb.setDefaultCommand(
+      new extendarm(
+        _climb, 
+        _secondaryController::getRightTriggerAxis,
+        _secondaryController::getLeftTriggerAxis
         )
     );
   }

@@ -17,7 +17,7 @@ public class RobotDrive extends SubsystemBase {
  // }
   public final TalonSRX left = new TalonSRX(kDRIVE_LEFT_A_NODE_ID);
   public final TalonSRX right = new TalonSRX(kDRIVE_RIGHT_A_NODE_ID);
-  public final Solenoid gearbox = new Solenoid(kDRIVE_GEARBOX_PNEUMATIC_NODE_ID,PneumaticsModuleType.CTREPCM, kDRIVE_GEARBOX_PNEUMATIC_PORT_ID);
+  public final Solenoid gearbox = new Solenoid(kDRIVE_PCM_NODE_ID,PneumaticsModuleType.CTREPCM, kDRIVE_GEARBOX_PNEUMATIC_PORT_ID);
   public RobotDrive() {
     new VictorSPX(kDRIVE_LEFT_B_NODE_ID).follow(left);
     new VictorSPX(kDRIVE_RIGHT_B_NODE_ID).follow(right);
