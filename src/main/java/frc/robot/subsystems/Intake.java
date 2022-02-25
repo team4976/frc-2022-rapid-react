@@ -14,8 +14,8 @@ public class Intake extends SubsystemBase {
     //private static final int module =10;
     //private static final int channel =98;
 
-    VictorSPX BottomElevator = new VictorSPX(20);
-    TalonFX intakeMotor = new TalonFX(31);
+    VictorSPX BottomElevator = new VictorSPX(kINTAKE_MOTOR_NODE);
+    TalonFX intakeMotor = new TalonFX(kINTAKE_NODE);
     Solenoid piston = new Solenoid(kDRIVE_PCM_NODE_ID, PneumaticsModuleType.CTREPCM, kINDEX_NODE_ID);
 
     public void intakeBall() {

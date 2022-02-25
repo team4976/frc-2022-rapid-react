@@ -17,6 +17,7 @@ public class EngageTurbo extends CommandBase {
     
     @Override
     public void initialize(){
+        super.initialize();
        // robotDrive.setTurboMode();
     }
 

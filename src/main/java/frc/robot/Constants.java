@@ -20,11 +20,11 @@ public final class Constants {
     public static int kDRIVE_RIGHT_A_NODE_ID = 45;
     public static int kDRIVE_RIGHT_B_NODE_ID = 46;
 
-    public static int kDRIVE_PCM_NODE_ID = 40;
+    public static int kDRIVE_PCM_NODE_ID = 10;
     public static int kDRIVE_GEARBOX_PNEUMATIC_PORT_ID = 1;
     public static double kDRIVE_SENSITIVITY_LEVEL = 0.9;
 
-    public static int kSHOOTER_A_NODE_ID = 30;
+    public static int kSHOOTER_A_NODE_ID = 42;
     public static double kSHOOT_LOW_SPEED = 0.2;
     public static double kSHOOT_HIGH_SPEED = 0.8;
 
@@ -52,6 +52,7 @@ public final class Constants {
     public static double kINITIAL_SPEED = 0.4;//Speed the motors go while starting
     public static double kSTOP_SPEED = 0;//Sets the motor speeds to 0
 //intake code
+    public static int kINTAKE_NODE = 31;
     public static double kINTAKE_RUN = 0.75;
     public static double kSTOP_INTAKE = 0;
     public static double kEJECT_INTAKE = -0.75;

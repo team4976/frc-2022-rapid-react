@@ -12,11 +12,13 @@ public class EngagePrecision extends CommandBase {
 
     @Override
     public void initialize(){
+        super.initialize();
      //   robotDrive.setPrecisionMode();
     }
 
     @Override
     public void end(boolean interupted){
+        super.initialize();
       //  robotDrive.endPrecisionMode();
     }
 
