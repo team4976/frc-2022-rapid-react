@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.*;
 public class AutoAim extends SubsystemBase{
     
     public static PIDController controller = new PIDController(0.1, 0.01, 0);
+    public static PIDController controller2 = new PIDController(0.1, 0.01, 0);
     public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 
     private static RobotDrive _drive;
@@ -27,12 +28,11 @@ public class AutoAim extends SubsystemBase{
         System.out.println(tx + ", " + ty);
         if(hasValidTarget()){
         double horizontalAdjust = controller.calculate(tx,0);
-        double verticalAdjust = controller.calculate(ty, 0);
+        double verticalAdjust = controller2.calculate(ty, 0);
         _drive.setArcadeDrive(verticalAdjust, horizontalAdjust);
         System.out.println(horizontalAdjust);
     }else{
         _drive.setArcadeDrive(0, 0);
-
         System.out.println("Theres no target");
 
     }

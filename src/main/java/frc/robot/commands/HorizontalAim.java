@@ -14,12 +14,16 @@ public class HorizontalAim extends CommandBase{
 
     @Override
     public void initialize(){
-        AutoAim.target();
         super.initialize();
     }
 
     @Override
     public boolean isFinished(){
         return false;
+    }
+
+    @Override
+    public void execute(){
+        AutoAim.target();
     }
 }
