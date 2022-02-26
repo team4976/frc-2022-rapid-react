@@ -16,7 +16,7 @@ public class SpoolHigh extends CommandBase {
     @Override
     public void initialize(){
     shootmotor.shooterSpeed(kSHOOTER_HIGH_SPEED);
-
+        System.out.println("This is running");
     super.initialize();
 }
 @Override

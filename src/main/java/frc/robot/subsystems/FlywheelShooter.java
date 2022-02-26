@@ -9,9 +9,9 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 public class FlywheelShooter extends SubsystemBase {
     public TalonFX shootmotor = new TalonFX(kSHOOTER_A_NODE_ID);
 
-    public void shooterSpeed(double speed) {
+    public void shooterSpeed(int speed) {
         //shootmotor.set(ControlMode.Velocity,speed);
-        shootmotor.set(ControlMode.PercentOutput, speed);
+        shootmotor.set(ControlMode.Velocity, speed);
     }
     
 }
