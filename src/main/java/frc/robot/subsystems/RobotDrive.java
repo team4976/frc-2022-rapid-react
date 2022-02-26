@@ -11,7 +11,7 @@ import static frc.robot.Constants.*;
 public class RobotDrive extends SubsystemBase {
  
   public static TalonSRX left = new TalonSRX(kDRIVE_LEFT_A_NODE_ID);
-  public static TalonSRX right = new TalonSRX(kDRIVE_LEFT_A_NODE_ID);
+  public static TalonSRX right = new TalonSRX(kDRIVE_RIGHT_A_NODE_ID);
 
   public RobotDrive() {
     new VictorSPX(kDRIVE_LEFT_B_NODE_ID).follow(left);

@@ -29,7 +29,7 @@ public class RobotContainer {
   private final AutoAim _autoaim = new AutoAim();
 
   private final XboxController _primaryController = new XboxController(0);
-  private final XboxController _secondaryController = new XboxController(1);
+  //private final XboxController _secondaryController = new XboxController(1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

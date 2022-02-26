@@ -24,9 +24,10 @@ public class TeleopDrive extends CommandBase {
     DoubleSupplier reverse 
   ) {
     _drive = drive;
+    _rotation = rotation;
     _forward = forward;
     _reverse = reverse;
-    _rotation = rotation;
+    
 
     addRequirements(drive);
   }
