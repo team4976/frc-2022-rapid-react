@@ -8,9 +8,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.commands.extendarm;
+import frc.robot.commands.passivein;
+import frc.robot.commands.passiveout;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.RobotDrive;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -59,6 +62,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    new JoystickButton(_secondaryController, XboxController.Button.kX.value)
+    .whenPressed(new passiveout(_climb));
+    new JoystickButton(_secondaryController, XboxController.Button.kA.value)
+    .whenPressed(new passivein(_climb));
    
   }
 

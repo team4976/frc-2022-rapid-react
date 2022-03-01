@@ -19,6 +19,8 @@ private RelativeEncoder m_encoder;
 
 
 public Solenoid solenoidclimber = new Solenoid(kCLIMBER_MODLE_A_NODE_ID, PneumaticsModuleType.CTREPCM, kCLIMBER_CHANNEL_A_NODE_ID);
+public Solenoid solenoidpassive1 = new Solenoid(kCLIMBER_MODLE_A_NODE_ID, PneumaticsModuleType.CTREPCM, kPASSIVECLIMBER_CHANNEL_A_NODE_ID);
+
 
 public CANSparkMax rightClimber = new CANSparkMax(kCLIMBER_LEFT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);//CANSparkMaxLowLevel.MotorType.kBrushless);
 public CANSparkMax leftClimber = new CANSparkMax(kCLIMBER_RIGHT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
@@ -27,6 +29,14 @@ public CANSparkMax leftClimber = new CANSparkMax(kCLIMBER_RIGHT_A_NODE_ID, CANSp
 public void zeroencoder(){
     m_encoder = rightClimber.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 4096);
     m_encoder.setPosition(0);
+}
+
+public void passiveout(){
+    solenoidpassive1.set(true);
+}
+
+public void passivein(){
+    solenoidpassive1.set(false);
 }
 
 
