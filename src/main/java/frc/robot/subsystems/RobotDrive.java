@@ -19,7 +19,7 @@ public class RobotDrive extends SubsystemBase {
   }
 
   public void setArcadeDrive(double forward, double rotation) {
-    left.set(ControlMode.PercentOutput, forward + rotation);
-    right.set(ControlMode.PercentOutput, forward - rotation);
+    left.set(ControlMode.PercentOutput, -forward + rotation);
+    right.set(ControlMode.PercentOutput, forward +  rotation);
   }
 }

@@ -2,14 +2,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.AutoAim;
+import frc.robot.subsystems.RobotDrive;
 
 public class HorizontalAim extends CommandBase{
 
     private AutoAim autoaim;
+    private RobotDrive robotDrive;
 
-    public HorizontalAim(AutoAim autoaim){
+    public HorizontalAim(AutoAim autoaim, RobotDrive robotDrive){
         this.autoaim = autoaim;
-        addRequirements(autoaim);
+        this.robotDrive = robotDrive;
+        addRequirements(autoaim, robotDrive);
     }
 
     @Override
@@ -24,6 +27,6 @@ public class HorizontalAim extends CommandBase{
 
     @Override
     public void execute(){
-        AutoAim.target();
+        AutoAim.target(robotDrive);
     }
 }

@@ -58,7 +58,7 @@ public class RobotContainer {
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
       .whenPressed(new IntakeBall(_intake));
     new JoystickButton(_primaryController, XboxController.Button.kLeftBumper.value)
-      .whileHeld(new HorizontalAim(_autoaim));
+      .whileHeld(new HorizontalAim(_autoaim, _robotDrive));
   }
 
   /**
