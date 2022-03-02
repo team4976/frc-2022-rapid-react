@@ -24,6 +24,43 @@ public final class Constants {
     public static int kINDEX_NODE_ID = 46;
     public static int kINTAKE_NODE_ID = 47;
 
-    public static double kSHOOTER_HIGH_SPEED = 10000;
-    public static double kINTAKE_HIGH_SPEED = 0.7;
+    public static double precisionMode = 1;
+    
+    /*public static double kINTAKE_RUN = 0.75;
+    public static double kSTOP_INTAKE = 0;
+    public static double kEJECT_INTAKE = -0.75;
+
+    public static double kBOTTOM_ELEVATOR = 0.5;
+    public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
+    public static double kBOTTOM_ELEVATOR_STOP = 0;
+
+    public static double kSHOOTER_LOW_SPEEED = 0.2;
+    public static double kSHOOTER_HIGH_SPEEED = 0.8;
+    public static int kINDEX_NODE_ID = 0; 
+*/
+//Elevator Code
+    public static int kDIGITAL_INPUT = 0; // node for the button to stop motor
+    public static int kINTAKE_MOTOR_NODE = 20; // the bottom motor that pushes the ball up, port 20
+    public static int kINDEX_NODE = 20; // the top motor (index) port 21
+
+    public static double kINTAKE_SPEED = 0.4;//Bottom Roller Speed
+    public static double kINDEX_SPEED = 0.6;//Top Roller Speed
+    public static double kINITIAL_SPEED = 0.4;//Speed the motors go while starting
+    public static double kSTOP_SPEED = 0;//Sets the motor speeds to 0
+//intake code
+    public static double kINTAKE_RUN = 0.75;
+    public static double kSTOP_INTAKE = 0;
+    public static double kEJECT_INTAKE = -0.75;
+
+    public static double kBOTTOM_ELEVATOR = 0.5;
+    public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
+    public static double kBOTTOM_ELEVATOR_STOP = 0;
+
+    public static double kSHOOTER_LOW_SPEED = 0.1;
+    public static double kSHOOTER_HIGH_SPEED = 0.5;
+    public static int kINDEX_NODE_ID = 0; 
+    
+    public static double kFALCON_UNITS_TO_RPM = 0.001;
+
+    
 }

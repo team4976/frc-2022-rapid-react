@@ -11,21 +11,15 @@ public class IntakeBall extends CommandBase {
         this.intake = intake;
         addRequirements(intake);
     }
-
+    
     @Override
-    public void initialize() {
-        intake.intakeBall();
-        super.initialize();
-    }
-
-    @Override
-    public void end(boolean interrupted) {
-        intake.stop();
-        super.end(interrupted);
+    public void initialize(){
+       super.initialize();
+       intake.intakeBall();
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }

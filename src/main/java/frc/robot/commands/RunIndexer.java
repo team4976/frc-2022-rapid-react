@@ -1,14 +1,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ShooterCommand;
+import frc.robot.subsystems.FlywheelShooter;
 
 public class RunIndexer extends CommandBase {
-    private ShooterCommand shooter;
+    private FlywheelShooter shooter;
 
-    public RunIndexer(ShooterCommand shooter){
-        this.shooter = shooter;
-
+    public RunIndexer(FlywheelShooter shooter) {
+            this.shooter = shooter;
     }
 
     @Override
