@@ -7,7 +7,6 @@ public class EngageTurbo extends CommandBase {
 
     public EngageTurbo(RobotDrive robotDrive){
         this.robotDrive = robotDrive;
-        addRequirements(robotDrive);
     }
 
     @Override
@@ -18,11 +17,11 @@ public class EngageTurbo extends CommandBase {
     @Override
     public void initialize(){
         super.initialize();
-       // robotDrive.setTurboMode();
+       robotDrive.setTurboMode();
     }
 
     @Override
     public void end(boolean interupted){
-      //  robotDrive.endTurboMode();
+      robotDrive.endTurboMode();
     }
 }

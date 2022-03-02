@@ -9,12 +9,16 @@ public class passiveout extends CommandBase{
     
     public passiveout(Climber passiveout){
         this.passiveout = passiveout;
-        addRequirements(passiveout);
     }
 
     @Override
     public void initialize(){
        super.initialize();
        passiveout.passiveout();
+    }
+
+    @Override
+    public boolean isFinished() {
+        return true;
     }
 }

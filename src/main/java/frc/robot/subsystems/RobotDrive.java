@@ -24,33 +24,37 @@ public class RobotDrive extends SubsystemBase {
   }
   double steer = 0.0;
     public void setArcadeDrive(double forward, double rotation) {
-      if ( Math.abs(steer) > 0.10){
-        steer = 0;
-      }
-      else{
-        steer = rotation*Math.abs(forward*kDRIVE_SENSITIVITY_LEVEL*precisionMode);
-      }
-    //steer = rotation*Math.abs(forward*kDRIVE_SENSITIVITY_LEVEL*precisionMode);
-    left.set(ControlMode.PercentOutput, (forward-steer) );
-    right.set(ControlMode.PercentOutput,(-forward-steer) );
-    if (forward == 0){
-      steer = rotation*kDRIVE_SENSITIVITY_LEVEL;
-      left.set(ControlMode.PercentOutput, -steer);
-      right.set(ControlMode.PercentOutput,  -steer);
-    }
-   } 
-  
-  /*
-  public void endPrecisionMode(){
-    precisionMode = 1;
-  }
 
-  public void setTurboMode(){
+      if (Math.abs(rotation) > 0.1 || Math.abs(forward) > 0.05) {
+        left.set(ControlMode.PercentOutput, (forward-rotation) );
+        right.set(ControlMode.PercentOutput,(-forward-rotation) );
+      } else {
+        left.set(ControlMode.PercentOutput, 0);
+        right.set(ControlMode.PercentOutput, 0);
+      }
+      
+
+      // if ( Math.abs(steer) > 0.10){
+      //   steer = 0;
+      // }
+      // else{
+      //   steer = rotation*Math.abs(forward*kDRIVE_SENSITIVITY_LEVEL*precisionMode);
+      // }
+    //steer = rotation*Math.abs(forward*kDRIVE_SENSITIVITY_LEVEL*precisionMode);
+   } 
+   public void setTurboMode(){
     gearbox.set(true);
     System.out.print("I'm running!");
   }
 
   public void endTurboMode(){
     gearbox.set(false);
-  }*/
+  }
+  
+  /*
+  public void endPrecisionMode(){
+    precisionMode = 1;
+  }
+
+  */
 }

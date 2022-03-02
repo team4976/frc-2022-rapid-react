@@ -7,12 +7,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Eject_Balls;
+import frc.robot.subsystems.AutoAim;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
 import frc.robot.commands.EngagePrecision;
 import frc.robot.commands.EngageTurbo;
+import frc.robot.commands.HorizontalAim;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.Load_Balls;
 import frc.robot.commands.Load_To_Shooter;
@@ -52,6 +54,7 @@ public class RobotContainer {
   private final Elevator _elevator = new Elevator();
   private final Intake _intake = new Intake();
   private final Climber _climb = new Climber();
+  private final AutoAim _autoaim = new AutoAim();
   boolean flag = false;
 
   private final XboxController _primaryController = new XboxController(0);
@@ -120,11 +123,17 @@ public class RobotContainer {
       new POVButton(_secondaryController, 0)
       .toggleWhenPressed(new SpoolHigh(_shooter));
       new POVButton(_secondaryController, 180)
+      
       .toggleWhenPressed(new SpoolLow(_shooter));
       new JoystickButton(_secondaryController, XboxController.Button.kX.value)
       .whenPressed(new passiveout(_climb));
-      new JoystickButton(_secondaryController, XboxController.Button.kA.value)
+
+      new JoystickButton(_secondaryController, 
+      XboxController.Button.kA.value)
       .whenPressed(new passivein(_climb));
+
+      new JoystickButton(_primaryController, XboxController.Button.kLeftBumper.value)
+      .whileHeld(new HorizontalAim(_autoaim, _robotDrive));
 
 
    //new JoystickButton(_primaryController, XboxController.Button.kY.value)
@@ -134,8 +143,8 @@ public class RobotContainer {
     //.whileHeld(new RunIndexer(_shooter), false);
     //new JoystickButton(_primaryController, XboxController.Button.kLeftBumper.value)
     //  .whileHeld(new EngagePrecision(_robotDrive), false);
-  //   new JoystickButton(_primaryController, XboxController.Button.kRightBumper.value)
-     // .whileHeld(new EngageTurbo(_robotDrive));
+      new JoystickButton(_primaryController, XboxController.Button.kRightBumper.value)
+       .whileHeld(new EngageTurbo(_robotDrive));
   }
 
   /**

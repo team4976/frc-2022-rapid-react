@@ -29,13 +29,16 @@ public void passivein(){
 
 public void extendarm(double ext, double ret){
 solenoidclimber.set(true);
-rightClimber.set(ext-ret);
-leftClimber.set(-(ext-ret));
 System.out.println(ext-ret);
 if((ext-ret) == 0){
-    rightClimber.set(0.02);
-    leftClimber.set(-0.02);
+    rightClimber.set(0.05);
+    leftClimber.set(-0.05);
 }
+else{
+    rightClimber.set(ext-ret);
+leftClimber.set(-(ext-ret));
+}
+
 }
 
 }

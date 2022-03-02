@@ -9,12 +9,16 @@ public class passivein extends CommandBase{
     
     public passivein(Climber passivein){
         this.passivein = passivein;
-        addRequirements(passivein);
     }
 
     @Override
     public void initialize(){
        super.initialize();
        passivein.passivein();
+    }
+
+    @Override
+    public boolean isFinished() {
+        return true;
     }
 }
