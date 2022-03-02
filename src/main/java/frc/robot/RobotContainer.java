@@ -24,6 +24,8 @@ import frc.robot.commands.TeleopDrive;
 import frc.robot.commands.ejectBall;
 import frc.robot.commands.extendBumper;
 import frc.robot.commands.extendarm;
+import frc.robot.commands.passivein;
+import frc.robot.commands.passiveout;
 import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
 //import frc.robot.subsystems.Intake;
@@ -119,6 +121,10 @@ public class RobotContainer {
       .toggleWhenPressed(new SpoolHigh(_shooter));
       new POVButton(_secondaryController, 180)
       .toggleWhenPressed(new SpoolLow(_shooter));
+      new JoystickButton(_secondaryController, XboxController.Button.kX.value)
+      .whenPressed(new passiveout(_climb));
+      new JoystickButton(_secondaryController, XboxController.Button.kA.value)
+      .whenPressed(new passivein(_climb));
 
 
    //new JoystickButton(_primaryController, XboxController.Button.kY.value)

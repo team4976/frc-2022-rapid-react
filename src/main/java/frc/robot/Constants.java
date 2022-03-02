@@ -63,10 +63,11 @@ public final class Constants {
     public static double kBOTTOM_ELEVATOR = 0.5;
     public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
     public static double kBOTTOM_ELEVATOR_STOP = 0;
+    public static double kTOP_ELEVATOR_EJECT = 0.5;
 
     //Shooter code
-    public static int kSHOOTER_LOW_SPEED = -5000;
-    public static int kSHOOTER_HIGH_SPEED = -10000;
+    public static double kSHOOTER_LOW_SPEED = 6500;
+    public static double kSHOOTER_HIGH_SPEED = 16000;
     public static int kINDEX_NODE_ID = 3; //change to port  
     
     public static double kFALCON_UNITS_TO_RPM = 0.001;
@@ -77,6 +78,8 @@ public final class Constants {
 
     public static int kCLIMBER_LEFT_A_NODE_ID=51;
     public static int kCLIMBER_RIGHT_A_NODE_ID=50;
+    
+    public static int kPASSIVECLIMBER_CHANNEL_A_NODE_ID = 4;
     //brake for climber is port 2
     
 }
