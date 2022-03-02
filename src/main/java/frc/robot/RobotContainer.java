@@ -16,7 +16,6 @@ import frc.robot.commands.IntakeBall;
 import frc.robot.commands.Load_Balls;
 import frc.robot.commands.Load_To_Shooter;
 import frc.robot.commands.RunIndexer;
-import frc.robot.commands.ShootHigh;
 import frc.robot.commands.SpoolHigh;
 import frc.robot.commands.SpoolLow;
 import frc.robot.commands.TeleopDrive;
@@ -24,6 +23,7 @@ import frc.robot.commands.ejectBall;
 import frc.robot.commands.extendBumper;
 import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
+import frc.robot.commands.Auto.Autonomous;
 //import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
 import frc.robot.subsystems.Shooter;
@@ -127,7 +127,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return null;
+    return new Autonomous(_intake, _shooter, _robotDrive);
   }
 
 }
