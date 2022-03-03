@@ -6,7 +6,6 @@ import frc.robot.subsystems.Climber;
 public class zeroencoder extends CommandBase{
     private final Climber _zero;
 
-
     
     public zeroencoder(
         Climber zero

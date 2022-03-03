@@ -26,4 +26,6 @@ public final class Constants {
 
     public static int kCLIMBER_LEFT_A_NODE_ID=51;
     public static int kCLIMBER_RIGHT_A_NODE_ID=50;
+
+    public static int kLAZER_NODE_ID=1;
 }

@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -24,6 +25,8 @@ public Solenoid solenoidpassive1 = new Solenoid(kCLIMBER_MODLE_A_NODE_ID, Pneuma
 
 public CANSparkMax rightClimber = new CANSparkMax(kCLIMBER_LEFT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);//CANSparkMaxLowLevel.MotorType.kBrushless);
 public CANSparkMax leftClimber = new CANSparkMax(kCLIMBER_RIGHT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+
+DigitalInput reastEncoders = new DigitalInput(kLAZER_NODE_ID);
 
 
 public void zeroencoder(){
@@ -51,8 +54,9 @@ else {
 rightClimber.set(ext-ret);
 leftClimber.set(-(ext-ret));
 }
-
-
+m_encoder = rightClimber.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 4096);
+if (reastEncoders.get() == true)
+m_encoder.setPosition(0);
 }
 
 }
