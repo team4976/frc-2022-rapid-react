@@ -8,13 +8,14 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.RunIndexer;
-import frc.robot.commands.ShootHigh;
+import frc.robot.commands.SpoolHigh;
 import frc.robot.commands.TeleopDrive;
+import frc.robot.commands.Auto.Autonomous;
+import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystems.ShooterCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -27,7 +28,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RobotDrive _robotDrive = new RobotDrive();
   private final Intake _intake = new Intake();
-  private final ShooterCommand _shooter = new ShooterCommand();
+  private final FlywheelShooter _shooter = new FlywheelShooter();
 
   private final XboxController _primaryController = new XboxController(0);
   // private final XboxController _secondaryController = new XboxController(1);
@@ -56,7 +57,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     new JoystickButton(_primaryController, XboxController.Button.kY.value)
-    .whenPressed(new ShootHigh(_shooter));
+    .whenPressed(new SpoolHigh(_shooter));
 
     new JoystickButton(_primaryController, XboxController.Button.kB.value)
     .whileHeld(new RunIndexer(_shooter), false);
@@ -71,7 +72,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return null;
+    return new Autonomous(_intake, _shooter, _robotDrive);
   }
 
 }

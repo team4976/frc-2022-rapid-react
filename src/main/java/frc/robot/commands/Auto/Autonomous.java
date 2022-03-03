@@ -5,7 +5,6 @@ import frc.robot.commands.IntakeBall;
 import frc.robot.commands.RunIndexer;
 import frc.robot.commands.SpoolHigh;
 import frc.robot.commands.stopIntake;
-import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
