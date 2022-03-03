@@ -69,7 +69,7 @@ public final class Constants {
     public static double kSHOOTER_LOW_SPEED = 6500;
     public static double kSHOOTER_HIGH_SPEED = 16000;
     public static int kINDEX_NODE_ID = 3; //change to port  
-    
+    public static int kSHOOTER_HOOD_ID = 5;
     public static double kFALCON_UNITS_TO_RPM = 0.001;
 
     //Climb Code

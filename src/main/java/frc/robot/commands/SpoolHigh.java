@@ -26,5 +26,6 @@ public class SpoolHigh extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         shootmotor.shooterSpeed(0);
+        shootmotor.hoodOff();
     }
 }

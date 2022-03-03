@@ -16,7 +16,7 @@ public class SpoolLow extends CommandBase {
     @Override
     public void initialize(){
     shootmotor.shooterSpeed(kSHOOTER_LOW_SPEED);
-
+    shootmotor.hoodOn();
 
     super.initialize();
 }
@@ -27,5 +27,6 @@ public class SpoolLow extends CommandBase {
 @Override
     public void end(boolean interrupted) {
         shootmotor.shooterSpeed(0);
+        shootmotor.hoodOff();
     }
 }
