@@ -1,24 +1,26 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ShooterCommand;
-import  frc.robot.commands.*;
-import static frc.robot.Constants.*;
-public class ShootHigh extends CommandBase {
+import frc.robot.Constants;
+import frc.robot.subsystems.Shooter;
 
-    ShooterCommand shooter;
+public class ShootHigh extends CommandBase {
+    Shooter shooter;
+
+    public ShootHigh(Shooter shooter) {
+        this.shooter = shooter;
+
+        addRequirements(shooter);
+    }
     
-    public ShootHigh(ShooterCommand shooterCommand) {
-        this.shooter = shooterCommand;
-        addRequirements(shooterCommand);
-        shooterCommand.shooterSpeed(kSHOOTER_HIGH_SPEED);
+    @Override
+    public void initialize() {
+        shooter.setShooterSpeed(Constants.kSHOOT_HIGH_SPEED);
+        super.initialize();
     }
 
     @Override
-    public void initialize(){
-
-
-    super.initialize();
+    public boolean isFinished() {
+        return true;
     }
 }

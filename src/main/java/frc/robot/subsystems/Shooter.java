@@ -12,6 +12,16 @@ public class Shooter extends SubsystemBase {
     DigitalInput indexSensor = new DigitalInput(1);
     
     TalonFX shootMotor = new TalonFX(kSHOOTER_A_NODE_ID);
-    TalonSRX indexMotor = new TalonSRX(kINDEX_NODE_ID);
-    
+    TalonSRX indexMotor = new TalonSRX(kSHOOTER_A_NODE_ID);
+    public void setShooterSpeed(double speed){
+        shootMotor.set(ControlMode.PercentOutput, speed);
+    }
+
+    public void setIndexerSpeed(double speed){
+        shootMotor.set(ControlMode.PercentOutput, speed);
+    }
+
+    public boolean ballAtIndexer() {
+        return indexSensor.get() == false;
+    }    
 }
