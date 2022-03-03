@@ -103,7 +103,7 @@ public class RobotContainer {
     
     //Intake
   new JoystickButton(_primaryController, XboxController.Button.kA.value)
-    .whenPressed(new IntakeBall(_intake));
+    .toggleWhenPressed(new IntakeBall(_intake));
 
   new JoystickButton(_primaryController, XboxController.Button.kB.value)
     .whenPressed(new stopIntake(_intake));
