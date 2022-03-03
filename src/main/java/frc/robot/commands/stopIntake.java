@@ -21,8 +21,13 @@ public class stopIntake extends CommandBase{
     
 @Override
     public void initialize(){
+        System.out.println("begin stop intake");
        super.initialize();
        intake.stopIntake();
+ }
+ @Override
+ public boolean isFinished(){
+     return true;
  }
     
 }

@@ -14,30 +14,17 @@ package frc.robot;
  */
 public final class Constants {
 
-    public static int kDRIVE_LEFT_A_NODE_ID = 0;
-    public static int kDRIVE_LEFT_B_NODE_ID = 1;
+    public static int kDRIVE_LEFT_A_NODE_ID = 41;
+    public static int kDRIVE_LEFT_B_NODE_ID = 43;
 
-    public static int kDRIVE_RIGHT_A_NODE_ID = 3;
-    public static int kDRIVE_RIGHT_B_NODE_ID = 4;
+    public static int kDRIVE_RIGHT_A_NODE_ID = 45;
+    public static int kDRIVE_RIGHT_B_NODE_ID = 46;
 
-    public static int kSHOOTER_A_NODE_ID = 45;
-    public static int kINDEX_NODE_ID = 46;
+    public static int kSHOOTER_A_NODE_ID = 42;
+    public static int kINDEX_NODE_ID = 3;
     public static int kINTAKE_NODE_ID = 47;
 
     public static double precisionMode = 1;
-    
-    /*public static double kINTAKE_RUN = 0.75;
-    public static double kSTOP_INTAKE = 0;
-    public static double kEJECT_INTAKE = -0.75;
-
-    public static double kBOTTOM_ELEVATOR = 0.5;
-    public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
-    public static double kBOTTOM_ELEVATOR_STOP = 0;
-
-    public static double kSHOOTER_LOW_SPEEED = 0.2;
-    public static double kSHOOTER_HIGH_SPEEED = 0.8;
-    public static int kINDEX_NODE_ID = 0; 
-*/
 //Elevator Code
     public static int kDIGITAL_INPUT = 0; // node for the button to stop motor
     public static int kINTAKE_MOTOR_NODE = 20; // the bottom motor that pushes the ball up, port 20
@@ -56,9 +43,8 @@ public final class Constants {
     public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
     public static double kBOTTOM_ELEVATOR_STOP = 0;
 
-    public static double kSHOOTER_LOW_SPEED = 0.1;
-    public static double kSHOOTER_HIGH_SPEED = 0.5;
-    public static int kINDEX_NODE_ID = 0; 
+    public static double kSHOOTER_LOW_SPEED = 6500;
+    public static double kSHOOTER_HIGH_SPEED = 16000;
     
     public static double kFALCON_UNITS_TO_RPM = 0.001;
 

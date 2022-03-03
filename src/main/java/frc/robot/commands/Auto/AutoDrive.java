@@ -16,13 +16,15 @@ public class AutoDrive extends CommandBase{
     }
     @Override
     public void initialize() {
-        robotDrive.setArcadeDrive(forwardSpeed, 0);// forward, and rotation
+        System.out.println("begin auto drive");
+        robotDrive.setArcadeDrive(0.5, 0);// forward, and rotation
         startTime=System.currentTimeMillis();
         // TODO Auto-generated method stub
         super.initialize();
     }
     @Override
     public void end(boolean interrupted) {
+        System.out.println("end auto drive");
         robotDrive.setArcadeDrive(0, 0);
         // TODO Auto-generated method stub
         super.end(interrupted);

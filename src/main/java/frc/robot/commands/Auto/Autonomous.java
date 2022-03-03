@@ -15,11 +15,11 @@ public class Autonomous extends SequentialCommandGroup{
         addCommands(
             new IntakeBall(intakeSub), 
             new SpoolHigh(shooterSub),
-            new AutoDrive(robotDrive, 0.8, 500),//speed, and duration in millis
+            new AutoDrive(robotDrive, 0.6, 1000),//speed, and duration in millis
             new stopIntake(intakeSub),
-            new AutoDrive(robotDrive, -0.8, 500),//speed, and duration in millis
+            new AutoDrive(robotDrive, -0.6, 1000),//speed, and duration in millis
             new RunIndexer(shooterSub),
-            new AutoDrive(robotDrive, 0.8, 500)
+            new AutoDrive(robotDrive, 0.6, 1000)
         );
     }
 }

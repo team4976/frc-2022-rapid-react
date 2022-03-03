@@ -15,15 +15,15 @@ public class FlywheelShooter extends SubsystemBase {
     TalonSRX indexMotor = new TalonSRX(kINDEX_NODE_ID);
     public void shooterSpeed(double speed) {
         //shootmotor.set(ControlMode.Velocity,speed);
-        shootmotor.set(ControlMode.PercentOutput, speed);
+        shootmotor.set(ControlMode.Velocity, speed);
     }
 
     public void setShooterSpeed(double speed){
-        shootmotor.set(ControlMode.PercentOutput, speed);
+        shootmotor.set(ControlMode.Velocity, speed);
     }
 
     public void setIndexerSpeed(double speed){
-        shootmotor.set(ControlMode.PercentOutput, speed);
+        shootmotor.set(ControlMode.Velocity, speed);
     }
 
     public boolean ballAtIndexer() {

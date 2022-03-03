@@ -21,7 +21,7 @@ public class SpoolHigh extends CommandBase {
 }
 @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
     @Override
     public void end(boolean interrupted) {
