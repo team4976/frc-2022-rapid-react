@@ -22,6 +22,7 @@ import frc.robot.commands.RunIndexer;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.SpoolHigh;
 import frc.robot.commands.SpoolLow;
+import frc.robot.commands.StopShooter;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.commands.ejectBall;
 import frc.robot.commands.extendBumper;
@@ -30,6 +31,7 @@ import frc.robot.commands.passivein;
 import frc.robot.commands.passiveout;
 import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
+import frc.robot.commands.Auto.Autonomous;
 //import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
 import frc.robot.subsystems.Shooter;
@@ -62,6 +64,8 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+
+    //void setBrakingMode(bool enabled)
 
     // Configure the button bindings
     configureButtonBindings();
@@ -121,10 +125,14 @@ public class RobotContainer {
       .whenPressed(new retractBumper(_intake));
 
       new POVButton(_secondaryController, 0)
-      .toggleWhenPressed(new SpoolHigh(_shooter));
-      new POVButton(_secondaryController, 180)
+      .whenPressed(new SpoolHigh(_shooter));
       
-      .toggleWhenPressed(new SpoolLow(_shooter));
+      new POVButton(_secondaryController, 180)
+      .whenPressed(new SpoolLow(_shooter));
+
+      new POVButton(_secondaryController, 90)
+      .whenPressed(new StopShooter(_shooter));
+      
       new JoystickButton(_secondaryController, XboxController.Button.kX.value)
       .whenPressed(new passiveout(_climb));
 
@@ -153,7 +161,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new Autonomous(_intake, _shooter, _robotDrive);
+    return new Autonomous(_intake, _shooter, _robotDrive, _elevator);
   }
 
 }

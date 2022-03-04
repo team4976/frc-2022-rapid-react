@@ -17,7 +17,7 @@ public class AutoDrive extends CommandBase{
     @Override
     public void initialize() {
         System.out.println("begin auto drive");
-        robotDrive.setArcadeDrive(0.5, 0);// forward, and rotation
+        robotDrive.setArcadeDrive(forwardSpeed, 0);// forward, and rotation
         startTime=System.currentTimeMillis();
         // TODO Auto-generated method stub
         super.initialize();

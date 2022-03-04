@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -19,6 +20,8 @@ public class RobotDrive extends SubsystemBase {
   public final TalonSRX right = new TalonSRX(kDRIVE_RIGHT_B_NODE_ID);
   public final Solenoid gearbox = new Solenoid(kDRIVE_PCM_NODE_ID,PneumaticsModuleType.CTREPCM, kDRIVE_GEARBOX_PNEUMATIC_PORT_ID);
   public RobotDrive() {
+    left.setNeutralMode(NeutralMode.Brake);
+    right.setNeutralMode(NeutralMode.Brake);
     new VictorSPX(kDRIVE_LEFT_A_NODE_ID).follow(left);
     new VictorSPX(kDRIVE_RIGHT_A_NODE_ID).follow(right);
   }

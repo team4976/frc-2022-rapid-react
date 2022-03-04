@@ -27,8 +27,8 @@ public final class Constants {
 
     
     public static int kSHOOTER_A_NODE_ID = 42;
-    public static double kSHOOT_LOW_SPEED = 0.2;
-    public static double kSHOOT_HIGH_SPEED = 2400;
+    // public static double kSHOOT_LOW_SPEED = 0.2;
+    // public static double kSHOOT_HIGH_SPEED = 2400;
 
     public static double precisionMode = 1;
     
@@ -53,7 +53,7 @@ public final class Constants {
     public static double kINDEX_SPEED = -0.3;//Top Roller Speed
     public static double kINITIAL_SPEED = 0.4;//Speed the motors go while starting
     public static double kSTOP_SPEED = 0;//Sets the motor speeds to 0
-    public static double kLOAD_SHOOT_SPEED = -1;
+    public static double kLOAD_SHOOT_SPEED = -0.6;
 //intake code
     public static int kINTAKE_NODE = 31;
     public static double kINTAKE_RUN = -0.75;
