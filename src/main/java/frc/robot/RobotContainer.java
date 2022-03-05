@@ -103,7 +103,10 @@ public class RobotContainer {
     .whenHeld(new Load_To_Shooter(_elevator));
 
   new JoystickButton(_primaryController, XboxController.Button.kY.value)
-    .whenHeld(new Eject_Balls(_elevator));
+    .whenHeld(new ejectBall(_intake));
+
+  new JoystickButton(_secondaryController, XboxController.Button.kY.value)
+    .whenPressed(new ejectBall(_intake));
     
     //Intake
   new JoystickButton(_primaryController, XboxController.Button.kA.value)
@@ -115,8 +118,7 @@ public class RobotContainer {
  new JoystickButton(_secondaryController, XboxController.Button.kB.value)
    .whenPressed(new stopIntake(_intake));
 
-  new JoystickButton(_secondaryController, XboxController.Button.kY.value)
-      .whenPressed(new ejectBall(_intake));
+
 
   new JoystickButton(_secondaryController, XboxController.Button.kLeftBumper.value)
       .whenPressed(new extendBumper(_intake));

@@ -66,12 +66,12 @@ public void extendarm(double output){
             leftClimber.set(output);
         }
         else {
-            leftClimber.getPIDController().setReference(0, ControlType.kVelocity);
+            leftClimber.set(-0.01);
         }
         solenoidclimber.set(true);
     }
     else {
-        leftClimber.getPIDController().setReference(0, ControlType.kVelocity);
+        leftClimber.set(-0.01);
     }
     
 

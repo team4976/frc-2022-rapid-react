@@ -4,10 +4,14 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.AutoAim;
+import frc.robot.subsystems.RobotDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -26,6 +30,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    CameraServer.startAutomaticCapture();
     m_robotContainer = new RobotContainer();
   }
 
@@ -47,18 +52,24 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    RobotDrive.left.setNeutralMode(NeutralMode.Coast);
+    RobotDrive.right.setNeutralMode(NeutralMode.Coast);
+
+  }
 
   @Override
   public void disabledPeriodic() {
     AutoAim.table.getEntry("ledMode").setNumber(1);
+    AutoAim.table.getEntry("camMode").setNumber(1);
   }
 
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
+    RobotDrive.left.setNeutralMode(NeutralMode.Brake);
+    RobotDrive.right.setNeutralMode(NeutralMode.Brake);
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -75,6 +86,8 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    RobotDrive.left.setNeutralMode(NeutralMode.Coast);
+    RobotDrive.right.setNeutralMode(NeutralMode.Coast);
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }

@@ -18,6 +18,7 @@ public class HorizontalAim extends CommandBase{
     @Override
     public void initialize(){
         AutoAim.table.getEntry("ledMode").setNumber(3);
+        AutoAim.table.getEntry("camMode").setNumber(0);
         super.initialize();
     }
 
@@ -33,5 +34,6 @@ public class HorizontalAim extends CommandBase{
     @Override
     public void end(boolean interrupted) {
         AutoAim.table.getEntry("ledMode").setNumber(1);
+        AutoAim.table.getEntry("camMode").setNumber(1);
     }
 }

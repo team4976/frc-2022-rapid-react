@@ -22,13 +22,13 @@ public class Autonomous extends SequentialCommandGroup{
         addCommands(
             new IntakeBall(intakeSub), 
             new SpoolHighCommand(shooterSub),
-            new AutoDrive(robotDrive, -0.6, 1500),//speed, and duration in millis
+            new AutoDrive(robotDrive, 0.6, 1100),//speed, and duration in millis
             new stopIntake(intakeSub),
-            new AutoDrive(robotDrive, 0.6, 1450),//speed, and duration in millis
+            //new AutoDrive(robotDrive, -0.6, 1450),//speed, and duration in millis
             new Delay(1000),
-            new AutoAimAuto(aim, robotDrive, 1000),//aims for 1 second
+            //new AutoAimAuto(aim, robotDrive, 1000),//aims for 1 second
             new Shooting2Balls(elevator),
-            new AutoDrive(robotDrive, -0.6, 2000),  
+            //new AutoDrive(robotDrive, 0.6, 2000),  
             new StopShooter(shooterSub)
         );
     }
