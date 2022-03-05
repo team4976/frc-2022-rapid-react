@@ -10,8 +10,8 @@ import edu.wpi.first.networktables.*;
 
 public class AutoAim extends SubsystemBase{
     
-    public static PIDController controller = new PIDController(0.025, 0.002, 0.03);
-    public static PIDController controller2 = new PIDController(0.02, 0.002, 0.03);
+    public static PIDController controller = new PIDController(0.08, 0, 0);
+    public static PIDController controller2 = new PIDController(0.1, 0, 0);
     public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 
 
@@ -22,8 +22,11 @@ public class AutoAim extends SubsystemBase{
         double tv = table.getEntry("tv").getDouble(0);
         return tv > 0;
     }
-
-    public static void target(RobotDrive _drive){   
+    static int interval = 0;
+    public static void target(RobotDrive _drive){ 
+        if(interval++ % 3 != 0){
+            return;
+        } 
         double tx  = table.getEntry("tx").getDouble(0);
         double ty = table.getEntry("ty").getDouble(0);
         System.out.println(tx + ", " + ty);
