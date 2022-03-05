@@ -20,21 +20,23 @@ public class RobotDrive extends SubsystemBase {
   public final TalonSRX right = new TalonSRX(kDRIVE_RIGHT_B_NODE_ID);
   public final Solenoid gearbox = new Solenoid(kDRIVE_PCM_NODE_ID,PneumaticsModuleType.CTREPCM, kDRIVE_GEARBOX_PNEUMATIC_PORT_ID);
   public RobotDrive() {
-    left.setNeutralMode(NeutralMode.Brake);
-    right.setNeutralMode(NeutralMode.Brake);
-    new VictorSPX(kDRIVE_LEFT_A_NODE_ID).follow(left);
-    new VictorSPX(kDRIVE_RIGHT_A_NODE_ID).follow(right);
+    final VictorSPX left = new VictorSPX(kDRIVE_LEFT_A_NODE_ID);
+    final VictorSPX right = new VictorSPX(kDRIVE_RIGHT_A_NODE_ID);
+    left.follow(this.left);
+    right.follow(this.right);
+    left.setInverted(true);
+    this.left.setInverted(true);
+    right.setInverted(false);
+    this.right.setInverted(false);
   }
   double steer = 0.0;
     public void setArcadeDrive(double forward, double rotation) {
 
-      if (Math.abs(rotation) > 0.1 || Math.abs(forward) > 0.05) {
-        left.set(ControlMode.PercentOutput, (forward-rotation) );
-        right.set(ControlMode.PercentOutput,(-forward-rotation) );
-      } else {
-        left.set(ControlMode.PercentOutput, 0);
-        right.set(ControlMode.PercentOutput, 0);
-      }
+      if (Math.abs(rotation) < 0.1) rotation = 0;
+      else rotation = rotation * rotation *(Math.abs(rotation) / rotation);
+        
+      left.set(ControlMode.PercentOutput, forward + rotation);
+      right.set(ControlMode.PercentOutput, forward - rotation);
       
 
       // if ( Math.abs(steer) > 0.10){

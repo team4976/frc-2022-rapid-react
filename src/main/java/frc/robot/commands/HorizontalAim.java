@@ -17,6 +17,7 @@ public class HorizontalAim extends CommandBase{
 
     @Override
     public void initialize(){
+        AutoAim.table.getEntry("ledMode").setNumber(3);
         super.initialize();
     }
 
@@ -28,5 +29,9 @@ public class HorizontalAim extends CommandBase{
     @Override
     public void execute(){
         AutoAim.target(robotDrive);
+    }
+    @Override
+    public void end(boolean interrupted) {
+        AutoAim.table.getEntry("ledMode").setNumber(1);
     }
 }

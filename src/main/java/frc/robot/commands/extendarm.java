@@ -29,8 +29,7 @@ public class extendarm extends CommandBase{
     @Override
     public void execute() {
       _climb.extendarm(
-        _ext.getAsDouble(),
-        _ret.getAsDouble()
+        _ext.getAsDouble() - _ret.getAsDouble()
       );
 }
 }

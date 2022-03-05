@@ -1,7 +1,11 @@
 package frc.robot.subsystems;
 import com.revrobotics.SparkMaxRelativeEncoder;
+import com.revrobotics.CANSparkMax.ControlType;
+import com.revrobotics.CANSparkMax.SoftLimitDirection;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.DigitalGlitchFilter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,11 +21,20 @@ public CANSparkMax leftClimber = new CANSparkMax(kCLIMBER_LEFT_A_NODE_ID, CANSpa
  
 public Solenoid solenoidclimber = new Solenoid(kCLIMBER_MODLE_A_NODE_ID, PneumaticsModuleType.CTREPCM, kCLIMBER_CHANNEL_A_NODE_ID);
 public Solenoid solenoidpassive1 = new Solenoid(kCLIMBER_MODLE_A_NODE_ID, PneumaticsModuleType.CTREPCM, kPASSIVECLIMBER_CHANNEL_A_NODE_ID);
+DigitalInput bottomSensor = new DigitalInput(3);
+
+boolean hasZeroedPosition = false;
 
 public Climber(){
-    rightClimber.setInverted(true);
-    rightClimber.follow(leftClimber);
+    rightClimber.follow(leftClimber, true);
+    leftClimber.setInverted(true);
+    // leftClimber.setSoftLimit(SoftLimitDirection.kForward, 100);
+    // leftClimber.setSoftLimit(SoftLimitDirection.kReverse, 50);
 
+
+}
+public boolean climberBottom(){
+    return bottomSensor.get() == false;
 }
 
 public void passiveout(){
@@ -33,26 +46,35 @@ public void passivein(){
 }
 
 
-public void extendarm(double ext, double ret){
-    System.out.println(leftClimber.getEncoder().getPosition()+ " ahhhhhhh ");
-double climb = ext-ret;
-solenoidclimber.set(true);
-System.out.println(ext-ret);
-if((climb) == 0){
-    leftClimber.set(0.05);
-}
-else{
-    solenoidpassive1.set(climb>0);
-    if (climb < 0 && leftClimber.getEncoder().getPosition() > -50){
-    leftClimber.set(-(climb));
+public void extendarm(double output){
+    if (climberBottom()) {
+        hasZeroedPosition = true;
+        leftClimber.getEncoder().setPosition(0);
+        rightClimber.getEncoder().setPosition(0);
     }
-    else if (climb > 0 ){
-    leftClimber.set(-(climb));
+    // System.out.println(hasZeroedPosition);
+    if (Math.abs(output) < 0.05) output = 0;
+    if (output !=0) {
+        solenoidpassive1.set(output > 0);
+
+        System.out.println(output + " " + climberBottom());
+
+        if (output < 0 && !climberBottom()) {
+            leftClimber.set(output);
+        }
+        else if (output > 0){
+            leftClimber.set(output);
+        }
+        else {
+            leftClimber.getPIDController().setReference(0, ControlType.kVelocity);
+        }
+        solenoidclimber.set(true);
     }
     else {
-    leftClimber.set(0.05);
+        leftClimber.getPIDController().setReference(0, ControlType.kVelocity);
     }
- }
+    
+
 
 }
 

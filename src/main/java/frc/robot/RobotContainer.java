@@ -74,8 +74,8 @@ public class RobotContainer {
       new TeleopDrive(
         _robotDrive, 
         _primaryController::getLeftX, 
-        _primaryController::getLeftTriggerAxis,
-        _primaryController::getRightTriggerAxis
+        _primaryController::getRightTriggerAxis,
+        _primaryController::getLeftTriggerAxis
         )
     );
 
@@ -161,7 +161,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new Autonomous(_intake, _shooter, _robotDrive, _elevator);
+    return new Autonomous(_intake, _shooter, _robotDrive, _elevator, _autoaim);
   }
 
 }
