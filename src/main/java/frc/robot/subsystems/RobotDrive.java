@@ -18,8 +18,10 @@ public class RobotDrive extends SubsystemBase {
     new VictorSPX(kDRIVE_RIGHT_B_NODE_ID).follow(right);
   }
 
+
   public void setArcadeDrive(double forward, double rotation) {
     left.set(ControlMode.PercentOutput, forward + rotation);
     right.set(ControlMode.PercentOutput, forward - rotation);
   }
 }
+

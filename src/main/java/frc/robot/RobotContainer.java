@@ -6,14 +6,20 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.FarHood;
+import frc.robot.commands.FeildHood;
+import frc.robot.commands.HighHood;
+import frc.robot.commands.LowHood;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.commands.extendarm;
 import frc.robot.commands.passivein;
 import frc.robot.commands.passiveout;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.RobotDrive;
+import frc.robot.subsystems.ShooterHood;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -26,6 +32,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RobotDrive _robotDrive = new RobotDrive();
   private final Climber _climb = new Climber();
+  private final ShooterHood shooterHood = new ShooterHood();
   
   private final XboxController _primaryController = new XboxController(1);
   private final XboxController _secondaryController = new XboxController(0);
@@ -66,7 +73,18 @@ public class RobotContainer {
     .whenPressed(new passiveout(_climb));
     new JoystickButton(_secondaryController, XboxController.Button.kA.value)
     .whenPressed(new passivein(_climb));
-   
+
+    new POVButton(_primaryController, 0)
+    .whenPressed(new HighHood(shooterHood));
+
+    new POVButton(_primaryController, 90)
+    .whenPressed(new FeildHood(shooterHood));
+
+    new POVButton(_primaryController, 180)
+    .whenPressed(new LowHood(shooterHood));
+
+    new POVButton(_primaryController, 270)
+    .whenPressed(new FarHood(shooterHood));
   }
 
   /**
