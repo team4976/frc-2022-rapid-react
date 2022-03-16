@@ -17,10 +17,13 @@ import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
 import frc.robot.commands.EngagePrecision;
 import frc.robot.commands.EngageTurbo;
+import frc.robot.commands.GoToHome;
+import frc.robot.commands.HomeAndZero;
 import frc.robot.commands.HorizontalAim;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.Load_Balls;
 import frc.robot.commands.Load_To_Shooter;
+import frc.robot.commands.LowShootHood;
 import frc.robot.commands.MoveHood;
 import frc.robot.commands.RunIndexer;
 import frc.robot.commands.ShootHigh;
@@ -28,6 +31,7 @@ import frc.robot.commands.SpoolHigh;
 import frc.robot.commands.SpoolLow;
 import frc.robot.commands.StopShooter;
 import frc.robot.commands.TeleopDrive;
+import frc.robot.commands.ZeroPos;
 import frc.robot.commands.ejectBall;
 import frc.robot.commands.extendBumper;
 import frc.robot.commands.extendarm;
@@ -91,7 +95,7 @@ public class RobotContainer {
         _secondaryController::getLeftTriggerAxis
         )
     );
-    _shooter.setDefaultCommand(new MoveHood(_shooter, _primaryController::getRightY));
+    //_shooter.setDefaultCommand(new MoveHood(_shooter, _primaryController::getRightY));
   }
 
   /**
@@ -129,6 +133,13 @@ public class RobotContainer {
 
   new JoystickButton(_secondaryController, XboxController.Button.kRightBumper.value)
       .whenPressed(new retractBumper(_intake));
+
+      new JoystickButton(_primaryController, XboxController.Button.kBack.value)
+      .whenPressed(new HomeAndZero(_shooter));
+
+      new JoystickButton(_primaryController, XboxController.Button.kStart.value)
+        .whenPressed(new LowShootHood(_shooter));
+      
 
       new POVButton(_secondaryController, 0)
       .whenPressed(new SpoolHigh(_shooter));

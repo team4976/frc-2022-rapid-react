@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.FlywheelShooter;
 import static frc.robot.Constants.*;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 public class SpoolHigh extends CommandBase {
     
     FlywheelShooter shootmotor;
@@ -17,10 +19,11 @@ public class SpoolHigh extends CommandBase {
     public void initialize(){
         shootmotor.shooterSpeed(kSHOOTER_HIGH_SPEED);
         super.initialize();
+        shootmotor.setHoodPosition(4000);
     }
     
     @Override
     public void end(boolean interrupted) {
-        shootmotor.shooterSpeed(0);
+        shootmotor.shootmotor.set(ControlMode.PercentOutput, 0);
     }
 }
