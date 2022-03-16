@@ -5,13 +5,13 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.RobotDrive;
 
-public class AutoDrive extends CommandBase{
+public class AutoDrivePos extends CommandBase{
     RobotDrive robotDrive;
     double forwardSpeed;
     int duration;
     long startTime;
     int rotation;
-    public AutoDrive(RobotDrive robotDrive, double forwardSpeed, int duration, int rotation){
+    public AutoDrivePos(RobotDrive robotDrive, double forwardSpeed, int duration, int rotation){
         this.robotDrive=robotDrive;
         this.rotation = rotation;
         addRequirements(robotDrive);
@@ -21,8 +21,8 @@ public class AutoDrive extends CommandBase{
     @Override
     public void initialize() {
         System.out.println("begin auto drive");
-        robotDrive.setArcadeDrive(forwardSpeed, rotation);// forward, and rotation
-        startTime=System.currentTimeMillis();
+        robotDrive.driveToPosition(forwardSpeed, rotation);// forward, and rotation
+        //startTime=System.currentTimeMillis();// wheel to wheel distance ~ 2 feet
         // TODO Auto-generated method stub
         super.initialize();
     }
@@ -35,7 +35,8 @@ public class AutoDrive extends CommandBase{
     }
     @Override
     public boolean isFinished() {
-        return System.currentTimeMillis()-startTime >= duration;
+        return true;
     }
     
 }
+

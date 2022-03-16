@@ -16,6 +16,7 @@ public final class Constants {
 //Drive Code
     public static int kDRIVE_LEFT_A_NODE_ID = 41;
     public static int kDRIVE_LEFT_B_NODE_ID = 43;
+    public static int kHOOD_NODE_ID = 50;
 
     public static int kDRIVE_RIGHT_A_NODE_ID = 45;
     public static int kDRIVE_RIGHT_B_NODE_ID = 46;

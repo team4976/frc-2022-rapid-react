@@ -15,8 +15,18 @@ public class FlywheelShooter extends SubsystemBase {
 
     public TalonFX shootmotor = new TalonFX(kSHOOTER_A_NODE_ID);
     TalonSRX indexMotor = new TalonSRX(kINDEX_NODE_ID);
-    Solenoid hood = new Solenoid(kDRIVE_PCM_NODE_ID, PneumaticsModuleType.CTREPCM, kSHOOTER_HOOD_ID);
 
+    public final TalonSRX hoodMotor = new TalonSRX(kHOOD_NODE_ID);
+
+    public FlywheelShooter() {
+        shootmotor.setInverted(true);
+        hoodMotor.setInverted(true);
+        hoodMotor.configPeakOutputForward(0.2);
+        hoodMotor.configPeakOutputReverse(-0.1);
+    }
+    public void setHoodPosition (double position) {
+        hoodMotor.set(ControlMode.PercentOutput, position);
+    }
 
     public void shooterSpeed(double speed) {
         //shootmotor.set(ControlMode.Velocity,speed);
@@ -35,15 +45,4 @@ public class FlywheelShooter extends SubsystemBase {
         return indexSensor.get() == false;
     }    
     
-
-    public FlywheelShooter(){
-        shootmotor.setInverted(true);
-    }   
-
-    public void hoodOn(){
-        hood.set(true);
-    }
-    public void hoodOff(){
-        hood.set(false);
-    }
 }

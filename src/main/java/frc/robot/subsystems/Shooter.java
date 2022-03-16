@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.*;
 
 public class Shooter extends SubsystemBase {
-    
     TalonFX shootMotor = new TalonFX(kSHOOTER_A_NODE_ID);
+  
 
     public void setShooterSpeed(double speed){
         shootMotor.set(ControlMode.PercentOutput, speed);

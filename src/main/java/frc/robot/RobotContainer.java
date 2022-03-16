@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Eject_Balls;
@@ -18,6 +21,7 @@ import frc.robot.commands.HorizontalAim;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.Load_Balls;
 import frc.robot.commands.Load_To_Shooter;
+import frc.robot.commands.MoveHood;
 import frc.robot.commands.RunIndexer;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.SpoolHigh;
@@ -31,7 +35,8 @@ import frc.robot.commands.passivein;
 import frc.robot.commands.passiveout;
 import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
-import frc.robot.commands.Auto.Autonomous;
+import frc.robot.commands.Auto.Get2HighAuto;
+import frc.robot.commands.Auto.Get2LowAuto;
 //import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
 import frc.robot.subsystems.Shooter;
@@ -86,6 +91,7 @@ public class RobotContainer {
         _secondaryController::getLeftTriggerAxis
         )
     );
+    _shooter.setDefaultCommand(new MoveHood(_shooter, _primaryController::getRightY));
   }
 
   /**
@@ -160,8 +166,24 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    return new Autonomous(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+  public static NetworkTable table = NetworkTableInstance.getDefault().getTable("Auto");
+
+  public Command getAutonomousCommand() 
+    {
+      NetworkTableEntry entry = table.getEntry("SelectAuto");
+      entry.setPersistent();
+
+
+      int selection = (int) entry.getDouble(0);
+
+    switch(selection){
+      case 1:
+        return new Get2HighAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      case 2:
+      return new Get2LowAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+    }
+    return null;
+    
   }
 
 }

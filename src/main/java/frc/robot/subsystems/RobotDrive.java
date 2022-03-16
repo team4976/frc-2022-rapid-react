@@ -55,6 +55,17 @@ public class RobotDrive extends SubsystemBase {
   public void endTurboMode(){
     gearbox.set(false);
   }
+
+  public void driveToPosition(double position, double rotation){//position in pulses(2048) per... 
+    right.setSelectedSensorPosition(0);
+    right.configMotionCruiseVelocity(1500);
+    right.configMotionAcceleration(1500);
+    right.set(ControlMode.MotionMagic, position);
+    rotation = rotation * rotation *(Math.abs(rotation) / rotation);
+        
+      left.set(ControlMode.MotionMagic, rotation);
+      right.set(ControlMode.MotionMagic, -rotation);
+  }
   
   /*
   public void endPrecisionMode(){
