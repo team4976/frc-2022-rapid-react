@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -31,6 +34,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
+    NetworkTableEntry entry = NetworkTableInstance.getDefault().getTable("Auto").getEntry("SelectAuto");
+    entry.setPersistent();
+
+    if (!entry.exists()) entry.setDouble(0);
+
+
+
     m_robotContainer = new RobotContainer();
   }
 
@@ -43,6 +53,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+  NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setDouble(1);
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic

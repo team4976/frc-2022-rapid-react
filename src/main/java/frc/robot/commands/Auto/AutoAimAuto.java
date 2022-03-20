@@ -12,7 +12,6 @@ public class AutoAimAuto extends CommandBase{
     public AutoAimAuto (AutoAim autoaim, RobotDrive robotDrive, int duration){
         aim = new HorizontalAim(autoaim, robotDrive);
         this.duration = duration;
-        addRequirements(autoaim);
     }
     
     @Override
@@ -21,8 +20,8 @@ public class AutoAimAuto extends CommandBase{
     }
     @Override
     public void initialize() {
-        aim.schedule();
         startTime=System.currentTimeMillis();
+        aim.schedule();
     }
     @Override
     public void end(boolean interrupted) {

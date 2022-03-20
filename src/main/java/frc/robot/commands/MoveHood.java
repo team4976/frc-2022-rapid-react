@@ -26,7 +26,6 @@ public class MoveHood extends CommandBase{
       
     @Override
     public void execute() {
-      System.out.println(_shooter.hoodMotor.getSelectedSensorPosition());
       _shooter.setHoodPosition(
         _ext.getAsDouble()
       );

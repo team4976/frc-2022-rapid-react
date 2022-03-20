@@ -64,11 +64,11 @@ public final class Constants {
     public static double kBOTTOM_ELEVATOR = 0.5;
     public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
     public static double kBOTTOM_ELEVATOR_STOP = 0;
-    public static double kTOP_ELEVATOR_EJECT = 0.5;
+    public static double kTOP_ELEVATOR_EJECT = 1;
 
     //Shooter code
-    public static double kSHOOTER_LOW_SPEED = 4200; //6500
-    public static double kSHOOTER_HIGH_SPEED = 11000; //10000 tarmac shot 9200 close high 45 inch away, 9500 high 57 inch away, 11000 high 81 inch away
+    public static double kSHOOTER_LOW_SPEED = 4600; //6500
+    public static double kSHOOTER_HIGH_SPEED = 9500; //10000 tarmac shot 9200 close high 45 inch away, 9500 high 57 inch away, 11000 high 81 inch away
     public static int kINDEX_NODE_ID = 3; //change to port  
     public static int kSHOOTER_HOOD_ID = 0; //note: blame Jude if this needs to be changed at any point
     public static double kFALCON_UNITS_TO_RPM = 0.001;

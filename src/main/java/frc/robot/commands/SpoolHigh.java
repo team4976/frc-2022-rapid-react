@@ -15,11 +15,23 @@ public class SpoolHigh extends CommandBase {
         addRequirements(FShooter);
     }
 
+    // limelight ty / shooter speed / hood position
+    // -7.04/10500/6000
+    // -6.20/10500/6000
+    // -4.35/10000/6000
+    // -2.42/10000/6000
+    // 0.20/9500/5000
+    // 2.76/9500/5000
+    // 5.78/9000/5000
+
+    //fender speed/hood position
+    // High - 9000/1500
+    // Low - 4200/7950
+
     @Override
     public void initialize(){
-        shootmotor.shooterSpeed(kSHOOTER_HIGH_SPEED);
-        super.initialize();
-        shootmotor.setHoodPosition(4000);
+        shootmotor.shooterSpeed(9500);
+        shootmotor.setHoodPosition(5000);
     }
     
     @Override

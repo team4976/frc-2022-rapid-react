@@ -15,6 +15,7 @@ public class SpoolHighCommand extends CommandBase{
     @Override
     public void initialize(){
     shootmotor.shooterSpeed(kSHOOTER_HIGH_SPEED);
+    shootmotor.setHoodPosition(4000);
 
     super.initialize();
 }

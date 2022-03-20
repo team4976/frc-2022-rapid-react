@@ -49,22 +49,32 @@ public class RobotDrive extends SubsystemBase {
    } 
    public void setTurboMode(){
     gearbox.set(true);
-    System.out.print("I'm running!");
   }
 
   public void endTurboMode(){
     gearbox.set(false);
   }
 
-  public void driveToPosition(double position, double rotation){//position in pulses(2048) per... 
+  public void driveToPosition(double position){//position in pulses(2048) per... 
+    right.setSelectedSensorPosition(0);
+    right.configMotionCruiseVelocity(4000);
+    right.configMotionAcceleration(1500);
+    right.set(ControlMode.MotionMagic, position);
+    left.setSelectedSensorPosition(0);
+    left.configMotionCruiseVelocity(4000);
+    left.configMotionAcceleration(1500);
+    left.set(ControlMode.MotionMagic, position);
+  
+  }
+  public void rotateOnPosition (double rotation){
     right.setSelectedSensorPosition(0);
     right.configMotionCruiseVelocity(1500);
     right.configMotionAcceleration(1500);
-    right.set(ControlMode.MotionMagic, position);
-    rotation = rotation * rotation *(Math.abs(rotation) / rotation);
-        
-      left.set(ControlMode.MotionMagic, rotation);
-      right.set(ControlMode.MotionMagic, -rotation);
+    right.set(ControlMode.MotionMagic, -rotation);
+    left.setSelectedSensorPosition(0);
+    left.configMotionCruiseVelocity(1500);
+    left.configMotionAcceleration(1500);
+    left.set(ControlMode.MotionMagic, rotation);
   }
   
   /*

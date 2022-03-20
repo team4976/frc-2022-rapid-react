@@ -57,7 +57,6 @@ public void extendarm(double output){
     if (output !=0) {
         solenoidpassive1.set(output > 0);
 
-        System.out.println(output + " " + climberBottom());
 
         if (output < 0 && !climberBottom()) {
             leftClimber.set(output);
@@ -66,12 +65,12 @@ public void extendarm(double output){
             leftClimber.set(output);
         }
         else {
-            leftClimber.getPIDController().setReference(0, ControlType.kVelocity);
+            leftClimber.set(0);
         }
         solenoidclimber.set(true);
     }
     else {
-        leftClimber.getPIDController().setReference(0, ControlType.kVelocity);
+        leftClimber.set(0);
     }
     
 

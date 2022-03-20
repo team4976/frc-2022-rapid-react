@@ -20,19 +20,27 @@ import frc.robot.subsystems.RobotDrive;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.AutoAim;
 
-public class Get2HighAuto extends SequentialCommandGroup{
-    public Get2HighAuto(Intake intake, FlywheelShooter shooter, RobotDrive robotDrive, Elevator elevator, AutoAim aim) {
+public class Get2HighAutoPos2 extends SequentialCommandGroup{
+    public Get2HighAutoPos2(Intake intake, FlywheelShooter shooter, RobotDrive robotDrive, Elevator elevator, AutoAim aim) {
         addCommands(
             new HomeAndZero(shooter),
             new IntakeBall(intake), 
             new SpoolHighCommand(shooter),
-            new AutoDrive(robotDrive, 0.6, 1500,0),//(robot, speed, and duration in millis, rotation in degrees)
+            new AutoDrivePos(robotDrive, 12000),
             new stopIntake(intake),
-            new AutoDrive(robotDrive, -0.6, 1000,0),//(robot, speed, and duration in millis, rotation in degrees)
-            new ParallelDeadlineGroup(new Delay(2000), new HorizontalAim(aim, robotDrive)),
+            new ParallelDeadlineGroup(new Delay(1000), new HorizontalAim(aim, robotDrive)),
             new Shooting2Balls(elevator),
-            new AutoDrive(robotDrive, 0.6, 1000,0),//(robot, speed, and duration in millis, rotation in degrees)
-            new StopShooter(shooter)
+            new AutoDrivePos(robotDrive, 12000),
+            new StopShooter(shooter),
+            new AutoTurn(robotDrive, -1700),
+            new IntakeBall(intake),
+            new AutoDrivePos(robotDrive, 40000),
+            new stopIntake(intake),
+            new AutoDrivePos(robotDrive, -45000),
+            new SpoolHighCommand(shooter),
+            new AutoTurn(robotDrive, 2000),
+            new ParallelDeadlineGroup(new Delay(1000), new HorizontalAim(aim, robotDrive)),
+            new Shooting2Balls(elevator)
         );
     }
 }

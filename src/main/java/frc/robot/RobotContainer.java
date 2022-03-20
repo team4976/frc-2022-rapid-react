@@ -20,6 +20,7 @@ import frc.robot.commands.EngageTurbo;
 import frc.robot.commands.GoToHome;
 import frc.robot.commands.HomeAndZero;
 import frc.robot.commands.HorizontalAim;
+import frc.robot.commands.IntakeAndLoad;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.Load_Balls;
 import frc.robot.commands.Load_To_Shooter;
@@ -40,7 +41,9 @@ import frc.robot.commands.passiveout;
 import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
 import frc.robot.commands.Auto.Get2HighAuto;
+import frc.robot.commands.Auto.Get2HighAutoPos;
 import frc.robot.commands.Auto.Get2LowAuto;
+import frc.robot.commands.Auto.MoveToPos;
 //import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
 import frc.robot.subsystems.Shooter;
@@ -107,17 +110,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
       //Elevator
     new JoystickButton(_primaryController, XboxController.Button.kA.value)
-    .toggleWhenPressed(new Load_Balls(_elevator));
+    .toggleWhenPressed(new IntakeAndLoad(_elevator, _intake));
 
   new JoystickButton(_primaryController, XboxController.Button.kX.value)
     .whenHeld(new Load_To_Shooter(_elevator));
 
   new JoystickButton(_primaryController, XboxController.Button.kY.value)
     .whenHeld(new Eject_Balls(_elevator));
-    
-    //Intake
-  new JoystickButton(_primaryController, XboxController.Button.kA.value)
-    .toggleWhenPressed(new IntakeBall(_intake));
 
   new JoystickButton(_primaryController, XboxController.Button.kB.value)
     .whenPressed(new stopIntake(_intake));
@@ -192,8 +191,14 @@ public class RobotContainer {
         return new Get2HighAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
       case 2:
       return new Get2LowAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      case 3:
+      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      case 4:
+      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
     }
     return null;
+
+    //return new MoveToPos(_robotDrive);
     
   }
 

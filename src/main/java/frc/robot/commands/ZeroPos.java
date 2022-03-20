@@ -16,7 +16,7 @@ public class ZeroPos extends CommandBase{
     @Override
     public void initialize() {
         super.initialize();
-        shooter.GoToHome(.15);
+        shooter.GoToHome(.2);
     }
 
     @Override
