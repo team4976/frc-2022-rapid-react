@@ -183,19 +183,19 @@ public class RobotContainer {
 
       int selection = (int) entry.getDouble(0);
 
-//    switch(selection){
-//      case 1:
-//        return new Get2HighAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
-//      case 2:
-//      return new Get2LowAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
-//      case 3:
-//      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
-//      case 4:
-//      return new Get2HighAutoPos2(_intake, _shooter, _robotDrive, _elevator, _autoaim);
-//    }
-//    return null;
+    switch(selection){
+      case 1:
+        return new Get2HighAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      case 2:
+      return new Get2LowAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      case 3:
+      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      case 4:
+      return new Get2HighAutoPos2(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+    }
+    return null;
 
-    return new MoveToPos(_robotDrive);
+//    return new MoveToPos(_robotDrive);
     
   }
 
