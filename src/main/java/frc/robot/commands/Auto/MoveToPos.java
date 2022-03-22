@@ -6,8 +6,8 @@ import frc.robot.subsystems.RobotDrive;
 public class MoveToPos extends SequentialCommandGroup{
     public MoveToPos(RobotDrive robotDrive){
         addCommands(
-            new AutoDrivePos(robotDrive, 12000),
-            new AutoDrivePos(robotDrive, -12000)
+            new AutoDrive(robotDrive, 0.5, 10000, 0)
+            //new AutoDrivePos(robotDrive, -12000)
         );
     }
     
