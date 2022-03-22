@@ -61,6 +61,12 @@ public class RobotDrive extends SubsystemBase {
     gearbox.set(false);
   }
   
+  public void driveToPosition(double position){
+    right.setSelectedSensorPosition(0);
+    right.configMotionCruiseVelocity(1500);
+    right.configMotionAcceleration(1500);
+    right.set(ControlMode.MotionMagic, position);
+  }
   /*
   public void endPrecisionMode(){
     precisionMode = 1;

@@ -22,8 +22,11 @@ public class Autonomous extends SequentialCommandGroup{
         addCommands(
             new IntakeBall(intakeSub), 
             new SpoolHighCommand(shooterSub),
-            new AutoDrive(robotDrive, 0.6, 1100),//speed, and duration in millis
+            //new AutoDrive(robotDrive, 0.6, 1850),//speed, and duration in millis
+            new MotionMagic(robotDrive),
+            new Delay(1000),
             new stopIntake(intakeSub),
+            new AutoDrive(robotDrive, -0.6, 750),//speed, and duration in millis
             //new AutoDrive(robotDrive, -0.6, 1450),//speed, and duration in millis
             new Delay(1000),
             //new AutoAimAuto(aim, robotDrive, 1000),//aims for 1 second
