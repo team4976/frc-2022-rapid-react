@@ -32,9 +32,11 @@ public class SpoolHigh extends CommandBase {
     public void initialize(){
         shootmotor.shooterSpeed(9000);
         shootmotor.setHoodPosition(1500);
+        //shootmotor.setShooterSpeed(16000);
+        //shootmotor.setHoodPosition(7000);
     }
     
-    @Override][\][\]
+    @Override
     public void end(boolean interrupted) {
         shootmotor.shootmotor.set(ControlMode.PercentOutput, 0);
     }

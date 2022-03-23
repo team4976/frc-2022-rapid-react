@@ -23,12 +23,12 @@ public class FlywheelShooter extends SubsystemBase {
         shootmotor.setInverted(true);
         hoodMotor.setInverted(true);
         hoodMotor.setSensorPhase(true);
-        hoodMotor.configPeakOutputForward(0.2);
-        hoodMotor.configPeakOutputReverse(-0.1);
+        hoodMotor.configPeakOutputForward(0.5);
+        hoodMotor.configPeakOutputReverse(-0.2);
     }
     public void setHoodPosition (double position) {
-        hoodMotor.configMotionCruiseVelocity(2000);
-        hoodMotor.configMotionAcceleration(4000);
+        hoodMotor.configMotionCruiseVelocity(6000);
+        hoodMotor.configMotionAcceleration(6000);
         hoodMotor.set(ControlMode.MotionMagic, position);
     }
 

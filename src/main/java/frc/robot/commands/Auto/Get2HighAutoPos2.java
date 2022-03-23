@@ -40,7 +40,7 @@ public class Get2HighAutoPos2 extends SequentialCommandGroup{
             new AutoDrivePos(robotDrive, -46000),
             new SpoolHighCommand(shooter),
             new AutoTurn(robotDrive, -1300),
-            new ParallelDeadlineGroup(new Delay(600), new HorizontalAim(aim, robotDrive)),
+            new ParallelDeadlineGroup(new Delay(600), new HorizontalAim(aim, robotDrive, shooter)),
             new Shooting2Balls(elevator)
         );
     }

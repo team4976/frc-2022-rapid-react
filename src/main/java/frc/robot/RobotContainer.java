@@ -145,6 +145,8 @@ public class RobotContainer {
 
       new POVButton(_secondaryController, 90)
       .whenPressed(new StopShooter(_shooter));
+      new POVButton(_secondaryController, 90)
+      .whenPressed(new HomeAndZero(_shooter));
       
       new JoystickButton(_secondaryController, XboxController.Button.kX.value)
       .whenPressed(new passiveout(_climb));
