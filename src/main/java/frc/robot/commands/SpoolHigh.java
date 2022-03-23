@@ -26,15 +26,15 @@ public class SpoolHigh extends CommandBase {
 
     //fender speed/hood position
     // High - 9000/1500
-    // Low - 4200/7950
+    // Low - 4600/7950
 
     @Override
     public void initialize(){
-        shootmotor.shooterSpeed(9500);
-        shootmotor.setHoodPosition(5000);
+        shootmotor.shooterSpeed(9000);
+        shootmotor.setHoodPosition(1500);
     }
     
-    @Override
+    @Override][\][\]
     public void end(boolean interrupted) {
         shootmotor.shootmotor.set(ControlMode.PercentOutput, 0);
     }

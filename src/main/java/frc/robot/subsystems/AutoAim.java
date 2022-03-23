@@ -2,8 +2,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-
-
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import static frc.robot.Constants.*;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.*;
 
@@ -26,12 +26,29 @@ public class AutoAim extends SubsystemBase{
     static int i = 0;
     double min = 0.2;
 
-    public static void target(RobotDrive _drive){   
+    public static void target(RobotDrive _drive, FlywheelShooter shooter){   
         if (i++ % 3 == 0) return;
 
         double tx  = table.getEntry("tx").getDouble(0);
         double ty = table.getEntry("ty").getDouble(0);
         if(hasValidTarget()){
+            System.out.println(ty);
+            if(ty > -7.04 && ty < -6.20){
+                shooter.setHoodPosition(6000);
+                shooter.setShooterSpeed(10500);
+            }
+            else if(ty > -4.35 && ty < -2.42){
+                shooter.setHoodPosition(6000);
+                shooter.setShooterSpeed(10000);
+            }
+            else if(ty > 0.20 && ty < 2.76){
+                shooter.setHoodPosition(5000);
+                shooter.setShooterSpeed(9500);
+            }
+            else if(ty > 5.78){
+                shooter.setHoodPosition(5000);
+                shooter.setShooterSpeed(9000);
+            }
         double horizontalAdjust = controller.calculate(tx,0);
         double verticalAdjust = controller2.calculate(ty, 0);
         if(horizontalAdjust > .6){horizontalAdjust = .6;}else if(horizontalAdjust < -0.6){horizontalAdjust = -0.6;}
