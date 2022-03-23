@@ -10,8 +10,8 @@ public class AutoDrive extends CommandBase{
     double forwardSpeed;
     int duration;
     long startTime;
-    int rotation;
-    public AutoDrive(RobotDrive robotDrive, double forwardSpeed, int duration, int rotation){
+    double rotation;
+    public AutoDrive(RobotDrive robotDrive, double forwardSpeed, int duration, double rotation){
         this.robotDrive=robotDrive;
         this.rotation = rotation;
         addRequirements(robotDrive);

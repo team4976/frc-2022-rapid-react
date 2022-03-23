@@ -9,6 +9,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.Auto.*;
 import frc.robot.commands.Eject_Balls;
 import frc.robot.subsystems.AutoAim;
 import frc.robot.subsystems.Climber;
@@ -40,10 +41,6 @@ import frc.robot.commands.passivein;
 import frc.robot.commands.passiveout;
 import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
-import frc.robot.commands.Auto.Get2HighAuto;
-import frc.robot.commands.Auto.Get2HighAutoPos;
-import frc.robot.commands.Auto.Get2LowAuto;
-import frc.robot.commands.Auto.MoveToPos;
 //import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
 import frc.robot.subsystems.Shooter;
@@ -194,11 +191,11 @@ public class RobotContainer {
       case 3:
       return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
       case 4:
-      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      return new Get2HighAutoPos2(_intake, _shooter, _robotDrive, _elevator, _autoaim);
     }
     return null;
 
-    //return new MoveToPos(_robotDrive);
+//    return new MoveToPos(_robotDrive);
     
   }
 
