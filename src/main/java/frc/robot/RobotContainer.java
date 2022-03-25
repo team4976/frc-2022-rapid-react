@@ -16,24 +16,16 @@ import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
-import frc.robot.commands.EngagePrecision;
 import frc.robot.commands.EngageTurbo;
-import frc.robot.commands.GoToHome;
 import frc.robot.commands.HomeAndZero;
 import frc.robot.commands.HorizontalAim;
 import frc.robot.commands.IntakeAndLoad;
-import frc.robot.commands.IntakeBall;
-import frc.robot.commands.Load_Balls;
 import frc.robot.commands.Load_To_Shooter;
 import frc.robot.commands.LowShootHood;
-import frc.robot.commands.MoveHood;
-import frc.robot.commands.RunIndexer;
-import frc.robot.commands.ShootHigh;
 import frc.robot.commands.SpoolHigh;
 import frc.robot.commands.SpoolLow;
 import frc.robot.commands.StopShooter;
 import frc.robot.commands.TeleopDrive;
-import frc.robot.commands.ZeroPos;
 import frc.robot.commands.ejectBall;
 import frc.robot.commands.extendBumper;
 import frc.robot.commands.extendarm;
@@ -43,12 +35,9 @@ import frc.robot.commands.retractBumper;
 import frc.robot.commands.stopIntake;
 //import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RobotDrive;
-import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
-
-import static frc.robot.Constants.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -191,9 +180,9 @@ public class RobotContainer {
       case 2:
       return new Get2LowAuto(_intake, _shooter, _robotDrive, _elevator, _autoaim);
       case 3:
-      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
-      case 4:
-      return new Get2HighAutoPos2(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+      return new Get4BallHighPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+//      case 4:
+//      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
     }
     return null;
 
