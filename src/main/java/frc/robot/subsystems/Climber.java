@@ -1,80 +1,94 @@
 package frc.robot.subsystems;
-import com.revrobotics.SparkMaxRelativeEncoder;
-import com.revrobotics.CANSparkMax.ControlType;
-import com.revrobotics.CANSparkMax.SoftLimitDirection;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.DigitalGlitchFilter;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import static frc.robot.Constants.*;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 
 
-public class Climber extends SubsystemBase {
+public class Climber extends SubsystemBase implements Sendable {
 
-public CANSparkMax rightClimber = new CANSparkMax(kCLIMBER_RIGHT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
-public CANSparkMax leftClimber = new CANSparkMax(kCLIMBER_LEFT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
- 
-public Solenoid solenoidclimber = new Solenoid(kCLIMBER_MODLE_A_NODE_ID, PneumaticsModuleType.CTREPCM, kCLIMBER_CHANNEL_A_NODE_ID);
-public Solenoid solenoidpassive1 = new Solenoid(kCLIMBER_MODLE_A_NODE_ID, PneumaticsModuleType.CTREPCM, kPASSIVECLIMBER_CHANNEL_A_NODE_ID);
-DigitalInput bottomSensor = new DigitalInput(3);
+  public CANSparkMax primary = new CANSparkMax(kCLIMBER_RIGHT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public CANSparkMax secondary = new CANSparkMax(kCLIMBER_LEFT_A_NODE_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
 
-boolean hasZeroedPosition = false;
+  public Solenoid extensionBrake = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kCLIMBER_CHANNEL_A_NODE_ID);
+  public Solenoid hookPosition = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kPASSIVECLIMBER_CHANNEL_A_NODE_ID);
 
-public Climber(){
-    rightClimber.follow(leftClimber, true);
-    leftClimber.setInverted(true);
-    // leftClimber.setSoftLimit(SoftLimitDirection.kForward, 100);
-    // leftClimber.setSoftLimit(SoftLimitDirection.kReverse, 50);
+  public double moveDelay = 100;
+  public long lastHookChange = 0;
 
+  public Climber() {
 
-}
-public boolean climberBottom(){
-    return bottomSensor.get() == false;
-}
+    primary.restoreFactoryDefaults();
+    primary.setInverted(true);
+    primary.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    primary.burnFlash();
 
-public void passiveout(){
-    solenoidpassive1.set(true);
-}
+    secondary.restoreFactoryDefaults();
+    secondary.follow(primary);
+    secondary.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    secondary.burnFlash();
+  }
 
-public void passivein(){
-    solenoidpassive1.set(false);
-}
+  @Override
+  public void initSendable(SendableBuilder builder) {
 
+    builder.addBooleanProperty(
+      "EnableExtensionLimit",
+      () -> primary.isSoftLimitEnabled(CANSparkMax.SoftLimitDirection.kForward),
+      (enable) -> primary.enableSoftLimit(CANSparkMax.SoftLimitDirection.kForward, enable)
+    );
 
-public void extendarm(double output){
-    if (climberBottom()) {
-        hasZeroedPosition = true;
-        leftClimber.getEncoder().setPosition(0);
-        rightClimber.getEncoder().setPosition(0);
+    builder.addDoubleProperty(
+      "ExtensionLimit",
+      () -> primary.getSoftLimit(CANSparkMax.SoftLimitDirection.kForward),
+      (limit) -> primary.setSoftLimit(CANSparkMax.SoftLimitDirection.kForward, (float) limit)
+    );
+
+    builder.addDoubleProperty(
+      "MoveDelay",
+      () -> moveDelay,
+      (newDelay) -> moveDelay = newDelay
+    );
+
+    builder.addDoubleProperty(
+      "Position",
+      () -> primary.getEncoder().getPosition(),
+      (newPosition) -> { }
+    );
+  }
+
+  public void disableExtensionBrake() {
+    extensionBrake.set(true);
+  }
+
+  public void setHooksExtended(boolean extended) {
+    if (hookPosition.get() == extended) return;
+    lastHookChange = System.currentTimeMillis();
+    hookPosition.set(extended);
+  }
+  
+  public long timeSinceLastHookChange() {
+    return System.currentTimeMillis() - lastHookChange;
+  }
+
+  public void extendArm(double output) {
+
+    if (Math.abs(output) < 0.05) {
+      moveDelay = System.currentTimeMillis();
+      primary.set(0);
+      return;
     }
-    // System.out.println(hasZeroedPosition);
-    if (Math.abs(output) < 0.05) output = 0;
-    if (output !=0) {
-        solenoidpassive1.set(output > 0);
 
+    setHooksExtended(output > 0);
+    disableExtensionBrake();
 
-        if (output < 0 && !climberBottom()) {
-            leftClimber.set(output);
-        }
-        else if (output > 0){
-            leftClimber.set(output);
-        }
-        else {
-            leftClimber.set(0);
-        }
-        solenoidclimber.set(true);
-    }
-    else {
-        leftClimber.set(0);
-    }
-    
-
-
-}
-
+    if (timeSinceLastHookChange() >= moveDelay) primary.set(output);
+    else primary.set(0);
+  }
 }

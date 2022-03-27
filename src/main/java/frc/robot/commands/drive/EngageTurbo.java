@@ -1,13 +1,9 @@
-package frc.robot.commands;
+package frc.robot.commands.drive;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.RobotDrive;
+
+import static frc.robot.RobotContainer.robotDrive;
+
 public class EngageTurbo extends CommandBase {
-
-    private RobotDrive robotDrive;
-
-    public EngageTurbo(RobotDrive robotDrive){
-        this.robotDrive = robotDrive;
-    }
 
     @Override
     public boolean isFinished(){
@@ -16,7 +12,6 @@ public class EngageTurbo extends CommandBase {
     
     @Override
     public void initialize(){
-        super.initialize();
        robotDrive.setTurboMode();
     }
 
