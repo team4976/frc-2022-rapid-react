@@ -16,42 +16,27 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
  */
 public final class Constants {
 
+    // Pneumatic Control Module Config
     public static int kPCM_NODE_ID = 10;
     public static PneumaticsModuleType kPCM_TYPE = PneumaticsModuleType.CTREPCM;
 
-//Drive Code
+    /** Drive **/
     public static int kDRIVE_LEFT_A_NODE_ID = 41;
     public static int kDRIVE_LEFT_B_NODE_ID = 43;
-    public static int kHOOD_NODE_ID = 50;
 
     public static int kDRIVE_RIGHT_A_NODE_ID = 45;
     public static int kDRIVE_RIGHT_B_NODE_ID = 46;
 
-    public static int kDRIVE_PCM_NODE_ID = 10;
-    public static int kDRIVE_GEARBOX_PNEUMATIC_PORT_ID = 1;
-    public static double kDRIVE_SENSITIVITY_LEVEL = 1;
+    public static int kSHIFT_SOLENOID_CHANNEL = 1;
 
 
-    
+    /** Shooter **/
+    public static int kHOOD_NODE_ID = 50;
+
     public static int kSHOOTER_A_NODE_ID = 42;
-    // public static double kSHOOT_LOW_SPEED = 0.2;
-    // public static double kSHOOT_HIGH_SPEED = 2400;
 
-    public static double precisionMode = 1;
-    
-    /*public static double kINTAKE_RUN = 0.75;
-    public static double kSTOP_INTAKE = 0;
-    public static double kEJECT_INTAKE = -0.75;
 
-    public static double kBOTTOM_ELEVATOR = 0.5;
-    public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
-    public static double kBOTTOM_ELEVATOR_STOP = 0;
-
-    public static double kSHOOTER_LOW_SPEEED = 0.2;
-    public static double kSHOOTER_HIGH_SPEEED = 0.8;
-    public static int kINDEX_NODE_ID = 0; 
-*/
-//Elevator Code
+    //Elevator Code
     public static int kDIGITAL_INPUT = 0; // node for the button to stop motor
     public static int kINTAKE_MOTOR_NODE = 20; // the bottom motor that pushes the ball up, port 20
     public static int kINDEX_NODE = 21; // the top motor (index) port 21
@@ -61,7 +46,8 @@ public final class Constants {
     public static double kINITIAL_SPEED = 0.4;//Speed the motors go while starting
     public static double kSTOP_SPEED = 0;//Sets the motor speeds to 0
     public static double kLOAD_SHOOT_SPEED = -0.6;
-//intake code
+
+    //intake code
     public static int kINTAKE_NODE = 31;
     public static double kINTAKE_RUN = -0.75;
     public static double kSTOP_INTAKE = 0;
@@ -75,7 +61,7 @@ public final class Constants {
     //Shooter code
     public static double kSHOOTER_LOW_SPEED = 4600; //6500
     public static double kSHOOTER_HIGH_SPEED = 9500; //10000 tarmac shot 9200 close high 45 inch away, 9500 high 57 inch away, 11000 high 81 inch away
-    public static int kINDEX_NODE_ID = 3; //change to port  
+    public static int kINTAKE_SOLENOID_CHANNEL = 3; //change to port
     public static int kSHOOTER_HOOD_ID = 0; //note: blame Jude if this needs to be changed at any point
     public static double kFALCON_UNITS_TO_RPM = 0.001;
 

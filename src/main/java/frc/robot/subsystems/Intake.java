@@ -4,7 +4,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.*;
@@ -19,7 +18,7 @@ public class Intake extends SubsystemBase {
     VictorSPX BottomElevator = new VictorSPX(kINTAKE_MOTOR_NODE);
     VictorSPX TopElevator  = new VictorSPX(kINDEX_NODE);
     TalonFX intakeMotor = new TalonFX(kINTAKE_NODE);
-    Solenoid piston = new Solenoid(kDRIVE_PCM_NODE_ID, PneumaticsModuleType.CTREPCM, kINDEX_NODE_ID);
+    Solenoid piston = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kINTAKE_SOLENOID_CHANNEL);
 
     public void intakeBall() {
         intaking = true;

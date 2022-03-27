@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -19,48 +20,51 @@ public class Climber extends SubsystemBase implements Sendable {
   public Solenoid extensionBrake = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kCLIMBER_CHANNEL_A_NODE_ID);
   public Solenoid hookPosition = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kPASSIVECLIMBER_CHANNEL_A_NODE_ID);
 
-  public double moveDelay = 100;
   public long lastHookChange = 0;
 
+  final private static NetworkTable table = NetworkTableInstance.getDefault().getTable("Climber");
+
+  final private static NetworkTableEntry enableExtensionLimit = table.getEntry("EnableExtensionLimit");
+  final private static NetworkTableEntry extensionLimit = table.getEntry("ExtensionLimit");
+  final private static NetworkTableEntry moveDelay = table.getEntry("MoveDelay");
+  final private static NetworkTableEntry position = table.getEntry("Position");
+
   public Climber() {
+
+    enableExtensionLimit.setPersistent();
+    if (!enableExtensionLimit.exists()) enableExtensionLimit.setBoolean(true);
+    enableExtensionLimit.addListener(
+        (e) -> primary.enableSoftLimit(CANSparkMax.SoftLimitDirection.kForward, e.value.getBoolean()),
+        EntryListenerFlags.kNew | EntryListenerFlags.kUpdate
+    );
+
+    extensionLimit.setPersistent();
+    if (!extensionLimit.exists()) extensionLimit.setDouble(160);
+    enableExtensionLimit.addListener(
+        (e) -> primary.setSoftLimit(CANSparkMax.SoftLimitDirection.kForward, (float) e.value.getDouble()),
+        EntryListenerFlags.kNew | EntryListenerFlags.kUpdate
+    );
+
+    moveDelay.setPersistent();
+    if (!moveDelay.exists()) moveDelay.setDouble(100);
 
     primary.restoreFactoryDefaults();
     primary.setInverted(true);
     primary.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    primary.enableSoftLimit(CANSparkMax.SoftLimitDirection.kForward, enableExtensionLimit.getBoolean(true));
+    primary.setSoftLimit(CANSparkMax.SoftLimitDirection.kForward, (float) extensionLimit.getDouble(160));
     primary.burnFlash();
 
     secondary.restoreFactoryDefaults();
     secondary.follow(primary);
     secondary.setIdleMode(CANSparkMax.IdleMode.kBrake);
     secondary.burnFlash();
+
   }
 
   @Override
-  public void initSendable(SendableBuilder builder) {
-
-    builder.addBooleanProperty(
-      "EnableExtensionLimit",
-      () -> primary.isSoftLimitEnabled(CANSparkMax.SoftLimitDirection.kForward),
-      (enable) -> primary.enableSoftLimit(CANSparkMax.SoftLimitDirection.kForward, enable)
-    );
-
-    builder.addDoubleProperty(
-      "ExtensionLimit",
-      () -> primary.getSoftLimit(CANSparkMax.SoftLimitDirection.kForward),
-      (limit) -> primary.setSoftLimit(CANSparkMax.SoftLimitDirection.kForward, (float) limit)
-    );
-
-    builder.addDoubleProperty(
-      "MoveDelay",
-      () -> moveDelay,
-      (newDelay) -> moveDelay = newDelay
-    );
-
-    builder.addDoubleProperty(
-      "Position",
-      () -> primary.getEncoder().getPosition(),
-      (newPosition) -> { }
-    );
+  public void periodic() {
+    position.setDouble(primary.getEncoder().getPosition());
   }
 
   public void disableExtensionBrake() {
@@ -80,7 +84,6 @@ public class Climber extends SubsystemBase implements Sendable {
   public void extendArm(double output) {
 
     if (Math.abs(output) < 0.05) {
-      moveDelay = System.currentTimeMillis();
       primary.set(0);
       return;
     }
@@ -88,7 +91,7 @@ public class Climber extends SubsystemBase implements Sendable {
     setHooksExtended(output > 0);
     disableExtensionBrake();
 
-    if (timeSinceLastHookChange() >= moveDelay) primary.set(output);
+    if (timeSinceLastHookChange() >= moveDelay.getDouble(0)) primary.set(output);
     else primary.set(0);
   }
 }

@@ -13,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class ShooterCommand extends SubsystemBase {
     
     TalonFX shooter = new TalonFX(kSHOOTER_A_NODE_ID);
-    TalonSRX indexMotor = new TalonSRX(kINDEX_NODE_ID);
+    TalonSRX indexMotor = new TalonSRX(kINTAKE_SOLENOID_CHANNEL);
     DigitalInput indexSensor = new DigitalInput(1);
 
     public void shooterSpeed(double speed) {
@@ -23,7 +23,7 @@ public class ShooterCommand extends SubsystemBase {
         indexMotor.set(ControlMode.PercentOutput, speed);
     }
 
-        public boolean ballAtIndexer(){
+    public boolean ballAtIndexer(){
             return indexSensor.get() ==false;
         }
         //change

@@ -1,8 +1,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.*;
 
@@ -15,7 +13,7 @@ public class FlywheelShooter extends SubsystemBase {
    public DigitalInput HomePosition = new DigitalInput(2);
 
     public TalonFX shootmotor = new TalonFX(kSHOOTER_A_NODE_ID);
-    TalonSRX indexMotor = new TalonSRX(kINDEX_NODE_ID);
+    TalonSRX indexMotor = new TalonSRX(kINTAKE_SOLENOID_CHANNEL);
 
     public final TalonSRX hoodMotor = new TalonSRX(kHOOD_NODE_ID);
 
