@@ -49,14 +49,15 @@ public class Climber extends SubsystemBase implements Sendable {
     if (!moveDelay.exists()) moveDelay.setDouble(100);
 
     primary.restoreFactoryDefaults();
-    primary.setInverted(true);
+    primary.setInverted(false);
     primary.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    primary.getEncoder().setPosition(0);
     primary.enableSoftLimit(CANSparkMax.SoftLimitDirection.kForward, enableExtensionLimit.getBoolean(true));
     primary.setSoftLimit(CANSparkMax.SoftLimitDirection.kForward, (float) extensionLimit.getDouble(160));
     primary.burnFlash();
 
     secondary.restoreFactoryDefaults();
-    secondary.follow(primary);
+    secondary.follow(primary, true);
     secondary.setIdleMode(CANSparkMax.IdleMode.kBrake);
     secondary.burnFlash();
 

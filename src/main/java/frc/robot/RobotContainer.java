@@ -63,6 +63,8 @@ public class RobotContainer {
      */
     public RobotContainer() {
 
+        climber.register();
+
         //void setBrakingMode(bool enabled)
 
         // Configure the button bindings
