@@ -9,9 +9,19 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.Auto.*;
-import frc.robot.commands.Eject_Balls;
+import frc.robot.commands.*;
+import frc.robot.commands.aim.HomeAndZero;
+import frc.robot.commands.aim.HorizontalAim;
+import frc.robot.commands.auto.*;
+import frc.robot.commands.elevator.Load_To_Shooter;
+import frc.robot.commands.intake.IntakeAndLoad;
+import frc.robot.commands.intake.extendBumper;
+import frc.robot.commands.intake.retractBumper;
+import frc.robot.commands.intake.stopIntake;
+import frc.robot.commands.shooter.LowShootHood;
+import frc.robot.commands.shooter.SpoolHigh;
+import frc.robot.commands.shooter.SpoolLow;
+import frc.robot.commands.shooter.StopShooter;
 import frc.robot.commands.climber.RetractClimberHooks;
 import frc.robot.subsystems.AutoAim;
 import frc.robot.subsystems.Climber;
@@ -19,21 +29,9 @@ import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
 import frc.robot.commands.drive.EngageTurbo;
-import frc.robot.commands.HomeAndZero;
-import frc.robot.commands.HorizontalAim;
-import frc.robot.commands.IntakeAndLoad;
-import frc.robot.commands.Load_To_Shooter;
-import frc.robot.commands.LowShootHood;
-import frc.robot.commands.SpoolHigh;
-import frc.robot.commands.SpoolLow;
-import frc.robot.commands.StopShooter;
 import frc.robot.commands.drive.TeleopDrive;
-import frc.robot.commands.ejectBall;
-import frc.robot.commands.extendBumper;
 import frc.robot.commands.climber.TeleopClimber;
 import frc.robot.commands.climber.ExtendClimberHooks;
-import frc.robot.commands.retractBumper;
-import frc.robot.commands.stopIntake;
 import frc.robot.subsystems.RobotDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -102,7 +100,7 @@ public class RobotContainer {
             .whenHeld(new Load_To_Shooter(elevator));
 
         new JoystickButton(_primaryController, XboxController.Button.kY.value)
-            .whenHeld(new Eject_Balls(elevator));
+            .whenHeld(new Eject(intake, elevator, shooter));
 
         new JoystickButton(_primaryController, XboxController.Button.kB.value)
             .whenPressed(new stopIntake(intake));
@@ -111,7 +109,7 @@ public class RobotContainer {
             .whenPressed(new stopIntake(intake));
 
         new JoystickButton(_secondaryController, XboxController.Button.kY.value)
-            .whenPressed(new ejectBall(intake));
+            .whenPressed(new Eject(intake, elevator, shooter));
 
         new JoystickButton(_secondaryController, XboxController.Button.kLeftBumper.value)
             .whenPressed(new extendBumper(intake));

@@ -17,8 +17,8 @@ public class Intake extends SubsystemBase {
 
     VictorSPX BottomElevator = new VictorSPX(kINTAKE_MOTOR_NODE);
     VictorSPX TopElevator  = new VictorSPX(kINDEX_NODE);
-    TalonFX intakeMotor = new TalonFX(kINTAKE_NODE);
-    Solenoid piston = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kINTAKE_SOLENOID_CHANNEL);
+    public TalonFX intakeMotor = new TalonFX(kINTAKE_NODE);
+    public Solenoid piston = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kINTAKE_SOLENOID_CHANNEL);
 
     public void intakeBall() {
         intaking = true;

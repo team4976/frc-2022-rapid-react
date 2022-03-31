@@ -45,6 +45,7 @@ public final class Constants {
     public static double kINDEX_SPEED = -0.3;//Top Roller Speed
     public static double kINITIAL_SPEED = 0.4;//Speed the motors go while starting
     public static double kSTOP_SPEED = 0;//Sets the motor speeds to 0
+    public static double kEJECT_SPEED = -0.1;//Indexer and bottom elevator eject speeds
     public static double kLOAD_SHOOT_SPEED = -0.6;
 
     //intake code
