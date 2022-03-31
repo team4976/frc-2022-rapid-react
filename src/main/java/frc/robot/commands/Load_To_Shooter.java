@@ -24,7 +24,7 @@ public class Load_To_Shooter extends CommandBase{
 
     @Override
     public void initialize() {
-        elevator.setMotorSpeeds(kLOAD_SHOOT_SPEED);
+        elevator.setMotorSpeeds(-kLOAD_SHOOT_SPEED);
     }
 
     @Override

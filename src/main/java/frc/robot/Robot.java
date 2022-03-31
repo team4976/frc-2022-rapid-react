@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -39,7 +40,7 @@ public class Robot extends TimedRobot {
 
     if (!entry.exists()) entry.setDouble(0);
 
-
+    CameraServer.startAutomaticCapture();
 
     m_robotContainer = new RobotContainer();
   }
