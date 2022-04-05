@@ -7,6 +7,8 @@ import frc.robot.commands.intake.IntakeBall;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Intake;
 
+import java.util.stream.Stream;
+
 public class IntakeAndLoad extends ParallelCommandGroup {
     
     public IntakeAndLoad(Elevator elevator, Intake intake) {

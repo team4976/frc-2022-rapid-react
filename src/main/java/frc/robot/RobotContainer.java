@@ -134,6 +134,8 @@ public class RobotContainer {
             .whenPressed(new StopShooter(shooter));
         new POVButton(_secondaryController, 90)
             .whenPressed(new HomeAndZero(shooter));
+        /*new POVButton(_secondaryController, 270)
+                .whenPressed(new Rainbow());*/
 
         new JoystickButton(_secondaryController, XboxController.Button.kX.value)
             .whenPressed(new ExtendClimberHooks());
