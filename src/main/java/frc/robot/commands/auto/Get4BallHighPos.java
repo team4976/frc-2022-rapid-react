@@ -2,6 +2,7 @@ package frc.robot.commands.auto;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.Delay;
+import frc.robot.commands.ResetPosition;
 import frc.robot.commands.aim.HomeAndZero;
 import frc.robot.commands.aim.HorizontalAim;
 import frc.robot.commands.intake.IntakeBall;
@@ -21,18 +22,20 @@ public class Get4BallHighPos extends SequentialCommandGroup{
             new IntakeBall(intake), 
             new SpoolHighCommand(shooter),
             new AutoDrivePos(robotDrive, 12000),
+            new ResetPosition(),
             new stopIntake(intake),
             //new Delay(200),
-            new ParallelDeadlineGroup(new Delay(200), new HorizontalAim(aim, robotDrive, shooter)),
+            new ParallelDeadlineGroup(new Delay(1000), new HorizontalAim(aim, robotDrive, shooter)),
             new Shooting2Balls(elevator),
             //new AutoDrivePos(robotDrive, 12000),
             new StopShooter(shooter),
-            new AutoTurn(robotDrive, 1300),
+            new AutoTurn(robotDrive, 2600),
             new IntakeBall(intake),
-            new AutoDrivePos(robotDrive, 45000),
-            new AutoDrivePos(robotDrive, -46000),
+            new AutoDrivePos(robotDrive, 48500),
+            new AutoDrivePos(robotDrive, -41000),
             new stopIntake(intake),
             new SpoolHighCommand(shooter),
+            new ResetPosition(),
             new AutoTurn(robotDrive, -1300),
             new ParallelDeadlineGroup(new Delay(600), new HorizontalAim(aim, robotDrive, shooter)),
             new Shooting2Balls(elevator)

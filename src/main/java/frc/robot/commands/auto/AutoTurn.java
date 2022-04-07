@@ -35,7 +35,7 @@ public class AutoTurn extends CommandBase{
         double leftError = Math.abs(position - robotDrive.left.getSelectedSensorPosition());
         double rightError = Math.abs(-position - robotDrive.right.getSelectedSensorPosition());
 
-        boolean inDeadband = Math.max(leftError, rightError) < 200;
+        boolean inDeadband = Math.max(leftError, rightError) < 500;
 
         boolean hasStopped = Math.abs(robotDrive.left.getSelectedSensorVelocity()) < 10
         && Math.abs(robotDrive.right.getSelectedSensorVelocity()) < 10;

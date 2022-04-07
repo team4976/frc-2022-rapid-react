@@ -56,14 +56,16 @@ public class RobotDrive extends SubsystemBase {
     }
 
     public void rotateOnPosition(double rotation) {
-        right.setSelectedSensorPosition(0);
         right.configMotionCruiseVelocity(2000);
         right.configMotionAcceleration(2000);
         right.set(ControlMode.MotionMagic, -rotation);
-        left.setSelectedSensorPosition(0);
         left.configMotionCruiseVelocity(2000);
         left.configMotionAcceleration(2000);
         left.set(ControlMode.MotionMagic, rotation);
+    }
+    public void resetPos () {
+        right.setSelectedSensorPosition(0);
+        left.setSelectedSensorPosition(0);
     }
   
   /*

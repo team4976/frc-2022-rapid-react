@@ -9,11 +9,9 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class FlywheelShooter extends SubsystemBase {
-    DigitalInput indexSensor = new DigitalInput(1);
    public DigitalInput HomePosition = new DigitalInput(2);
 
     public TalonFX shootmotor = new TalonFX(kSHOOTER_A_NODE_ID);
-    TalonSRX indexMotor = new TalonSRX(kINTAKE_SOLENOID_CHANNEL);
 
     public final TalonSRX hoodMotor = new TalonSRX(kHOOD_NODE_ID);
 
@@ -42,13 +40,4 @@ public class FlywheelShooter extends SubsystemBase {
     public void setShooterSpeed(double speed){
         shootmotor.set(ControlMode.Velocity, speed);
     }
-
-    public void setIndexerSpeed(double speed){
-        shootmotor.set(ControlMode.Velocity, speed);
-    }
-
-    public boolean ballAtIndexer() {
-        return indexSensor.get() == false;
-    }    
-    
 }

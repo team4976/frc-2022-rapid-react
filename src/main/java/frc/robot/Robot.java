@@ -8,10 +8,13 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.AddressableLED;
+import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.AutoAim;
+import frc.robot.subsystems.LED;
 import static frc.robot.Constants.*;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -28,12 +31,17 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+
+  LED led = new LED();
+
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
   @Override
   public void robotInit() {
+    //led.ledRainbow();
 
     NetworkTableEntry entry = NetworkTableInstance.getDefault().getTable("Auto").getEntry("SelectAuto");
     entry.setPersistent();
@@ -45,6 +53,8 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
   }
 
+
+
   /**
    * This function is called every robot packet, no matter the mode. Use this for items like
    * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
@@ -54,6 +64,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
+    led.ledRainbow(50);
+
   NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setDouble(1);
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,

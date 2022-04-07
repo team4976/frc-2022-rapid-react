@@ -28,6 +28,7 @@ import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LED;
 import frc.robot.commands.drive.EngageTurbo;
 import frc.robot.commands.drive.TeleopDrive;
 import frc.robot.commands.climber.TeleopClimber;
@@ -52,6 +53,8 @@ public class RobotContainer {
     public static final Intake intake = new Intake();
     public static final Climber climber = new Climber();
     public static final AutoAim autoaim = new AutoAim();
+//    public static final LED led = new LED(5, 5, 5);
+
 
     private final XboxController _primaryController = new XboxController(0);
     private final XboxController _secondaryController = new XboxController(1);
@@ -75,6 +78,10 @@ public class RobotContainer {
                 _primaryController::getLeftTriggerAxis
             )
         );
+
+//        led.setDefaultCommand(
+//                new Rainbow(led, ledBuffer)
+//        );
 
         climber.setDefaultCommand(
             new TeleopClimber(
@@ -134,8 +141,8 @@ public class RobotContainer {
             .whenPressed(new StopShooter(shooter));
         new POVButton(_secondaryController, 90)
             .whenPressed(new HomeAndZero(shooter));
-        /*new POVButton(_secondaryController, 270)
-                .whenPressed(new Rainbow());*/
+//        new POVButton(_secondaryController, 270)
+//                .toggleWhenPressed();
 
         new JoystickButton(_secondaryController, XboxController.Button.kX.value)
             .whenPressed(new ExtendClimberHooks());

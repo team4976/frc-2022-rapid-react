@@ -5,23 +5,21 @@ import frc.robot.subsystems.LED;
 
 public class Rainbow extends CommandBase {
     LED led;
-    LED ledBuffer;
     public Rainbow (LED led, LED ledBuffer){
         this.led=led;
-        this.ledBuffer=ledBuffer;
         //addRequirements(led, ledBuffer);
     }
 
     @Override
     public void initialize() {
-        led.ledRainbow(5);
-        led.led.setData(ledBuffer.ledBuffer);
-        super.initialize();
+        led.setLed(30, 100, 100);
+        led.led.setData(led.ledBuffer);
     }
 
     @Override
-    public boolean isFinished() {
-        return false;
+    public void end(boolean interrupted) {
+        //led.setLed(0,0,0);
+        super.end(interrupted);
     }
 }
 
