@@ -33,7 +33,7 @@ public class Elevator extends SubsystemBase {
     //Sets Both Motors Speed
     public void setMotorSpeeds(double speed){
         indexer.set(ControlMode.PercentOutput, -speed);
-        intakeRoller.set(ControlMode.PercentOutput, speed);
+        intakeRoller.set(ControlMode.PercentOutput, (speed));
     }
 
     //Ejects Balls from elevator

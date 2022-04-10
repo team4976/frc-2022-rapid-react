@@ -14,6 +14,7 @@ import frc.robot.commands.aim.HomeAndZero;
 import frc.robot.commands.aim.HorizontalAim;
 import frc.robot.commands.auto.*;
 import frc.robot.commands.elevator.Load_To_Shooter;
+import frc.robot.commands.elevator.Load_To_Shooter_Auto;
 import frc.robot.commands.intake.IntakeAndLoad;
 import frc.robot.commands.intake.extendBumper;
 import frc.robot.commands.intake.retractBumper;
@@ -186,8 +187,8 @@ public class RobotContainer {
                 return new Get2LowAuto(intake, shooter, robotDrive, elevator, autoaim);
             case 3:
                 return new Get4BallHighPos(intake, shooter, robotDrive, elevator, autoaim);
-//      case 4:
-//      return new Get2HighAutoPos(_intake, _shooter, _robotDrive, _elevator, _autoaim);
+            case 4:
+            return new Get2HighEject2Auto(intake, shooter, robotDrive, elevator, autoaim);
         }
         return null;
 

@@ -14,7 +14,7 @@ public class EjectIntake extends CommandBase {
     @Override
     public void initialize() {
         intake.piston.set(true);
-        intake.intakeMotor.set(ControlMode.PercentOutput, -0.5);
+        intake.intakeMotor.set(ControlMode.PercentOutput, 0.5);
         super.initialize();
     }
 

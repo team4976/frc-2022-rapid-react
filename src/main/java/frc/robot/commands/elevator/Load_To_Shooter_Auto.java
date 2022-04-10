@@ -23,6 +23,7 @@ public class Load_To_Shooter_Auto extends CommandBase{
 
     @Override
     public boolean isFinished() {
+        //return false;
         return System.currentTimeMillis()-startTime >= duration;
     }
 
@@ -30,6 +31,17 @@ public class Load_To_Shooter_Auto extends CommandBase{
     public void initialize() {
         elevator.setMotorSpeeds(-kLOAD_SHOOT_SPEED);
         startTime=System.currentTimeMillis();
+    }
+
+    @Override
+    public void execute() {
+        if (elevator.indexSensor.get()){
+            elevator.setRollerSpeed(-kLOAD_SHOOT_SPEED);
+        }
+        else {
+            elevator.setRollerSpeed(0);
+
+        }
     }
 
     @Override

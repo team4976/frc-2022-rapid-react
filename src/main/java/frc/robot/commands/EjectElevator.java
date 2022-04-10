@@ -13,8 +13,8 @@ public class EjectElevator extends CommandBase {
 
     @Override
     public void initialize() {
-        elevator.indexer.set(ControlMode.PercentOutput, -0.5);
-        elevator.intakeRoller.set(ControlMode.PercentOutput, 0.5);
+        elevator.indexer.set(ControlMode.PercentOutput, 0.5);
+        elevator.intakeRoller.set(ControlMode.PercentOutput, -0.5);
         super.initialize();
     }
 

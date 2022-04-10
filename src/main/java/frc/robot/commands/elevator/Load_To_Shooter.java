@@ -28,6 +28,16 @@ public class Load_To_Shooter extends CommandBase{
     }
 
     @Override
+    public void execute() {
+        if (elevator.indexSensor.get()){
+            elevator.setRollerSpeed(-kLOAD_SHOOT_SPEED);
+        }
+        else {
+            elevator.setRollerSpeed(0);
+        }
+    }
+
+    @Override
     public void end(boolean interrupted) {
         elevator.setMotorSpeeds(kSTOP_SPEED);
     }
