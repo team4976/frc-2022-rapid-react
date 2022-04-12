@@ -33,15 +33,20 @@ public class AutoAim extends SubsystemBase{
         double ty = table.getEntry("ty").getDouble(0);
         if(hasValidTarget()){
             System.out.println(ty);
-            if(ty > -7.04 && ty < -6.20){
+            if (ty >-10 && ty < -7.04) {
+                shooter.setHoodPosition(7000);
+                shooter.setShooterSpeed(11000);
+            }
+
+            else if(ty > -7.04 && ty < -6.20){
                 shooter.setHoodPosition(6000);
                 shooter.setShooterSpeed(10500);
             }
-            else if(ty > -4.35 && ty < -2.42){
+            else if(ty > -4.35 && ty < 0){
                 shooter.setHoodPosition(6000);
                 shooter.setShooterSpeed(10000);
             }
-            else if(ty > 0.20 && ty < 2.76){
+            else if(ty > 0 && ty < 2.76){
                 shooter.setHoodPosition(5000);
                 shooter.setShooterSpeed(9500);
             }

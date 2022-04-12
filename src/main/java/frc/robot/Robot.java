@@ -49,6 +49,7 @@ public class Robot extends TimedRobot {
     if (!entry.exists()) entry.setDouble(0);
 
     CameraServer.startAutomaticCapture();
+    RobotContainer.robotDrive.setCoastMode();
 
     m_robotContainer = new RobotContainer();
   }
@@ -77,7 +78,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    RobotContainer.robotDrive.setCoastMode();
+  }
 
   @Override
   public void disabledPeriodic() {
@@ -87,6 +90,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+    RobotContainer.robotDrive.setBreakingMode();
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -105,6 +109,8 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    RobotContainer.robotDrive.setBreakingMode();
+
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }

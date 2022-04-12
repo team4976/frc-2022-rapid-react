@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -12,19 +13,41 @@ import static frc.robot.Constants.*;
 public class RobotDrive extends SubsystemBase {
 
     public final TalonSRX left = new TalonSRX(kDRIVE_LEFT_B_NODE_ID);
+    public final VictorSPX leftSecondary = new VictorSPX(kDRIVE_LEFT_A_NODE_ID);
     public final TalonSRX right = new TalonSRX(kDRIVE_RIGHT_B_NODE_ID);
+    public final VictorSPX rightSecondary = new VictorSPX(kDRIVE_RIGHT_A_NODE_ID);
+
+
+
     public final Solenoid gearbox = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kSHIFT_SOLENOID_CHANNEL);
 
     public RobotDrive() {
-        final VictorSPX left = new VictorSPX(kDRIVE_LEFT_A_NODE_ID);
-        final VictorSPX right = new VictorSPX(kDRIVE_RIGHT_A_NODE_ID);
-        left.follow(this.left);
-        right.follow(this.right);
+        leftSecondary.follow(this.left);
+        rightSecondary.follow(this.right);
+
+        leftSecondary.setInverted(true);
         left.setInverted(true);
-        this.left.setInverted(true);
+
+        rightSecondary.setInverted(false);
         right.setInverted(false);
-        this.right.setInverted(false);
     }
+
+    public void setCoastMode() {
+        left.setNeutralMode(NeutralMode.Coast);
+        right.setNeutralMode(NeutralMode.Coast);
+
+        leftSecondary.setNeutralMode(NeutralMode.Coast);
+        rightSecondary.setNeutralMode(NeutralMode.Coast);
+    }
+
+    public void setBreakingMode() {
+        left.setNeutralMode(NeutralMode.Brake);
+        right.setNeutralMode(NeutralMode.Brake);
+
+        leftSecondary.setNeutralMode(NeutralMode.Coast);
+        rightSecondary.setNeutralMode(NeutralMode.Coast);
+    }
+
 
     public void setArcadeDrive(double forward, double rotation) {
 
