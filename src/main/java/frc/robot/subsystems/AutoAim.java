@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import static frc.robot.Constants.*;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.*;
+import frc.robot.RobotContainer;
 
 
 public class AutoAim extends SubsystemBase{
@@ -32,7 +33,8 @@ public class AutoAim extends SubsystemBase{
         double tx  = table.getEntry("tx").getDouble(0);
         double ty = table.getEntry("ty").getDouble(0);
         if(hasValidTarget()){
-            System.out.println(ty);
+            RobotContainer.statusLight.setHSV(240, 255, 255);
+
             if (ty >-10 && ty < -7.04) {
                 shooter.setHoodPosition(7000);
                 shooter.setShooterSpeed(11000);
@@ -61,7 +63,7 @@ public class AutoAim extends SubsystemBase{
     }else{
         _drive.setArcadeDrive(0, 0);
         System.out.println("Theres no target");
-
+        RobotContainer.statusLight.setHSV(0, 255, 255);
     }
 
     }

@@ -54,7 +54,7 @@ public final class Constants {
     public static double kSTOP_INTAKE = 0;
     public static double kEJECT_INTAKE = 0.75;
 
-    public static double kBOTTOM_ELEVATOR = 0.5;
+    public static double kBOTTOM_ELEVATOR = 1;
     public static double kBOTTOM_ELEVATOR_EJECT = -0.5;
     public static double kBOTTOM_ELEVATOR_STOP = 0;
     public static double kTOP_ELEVATOR_EJECT = 1;

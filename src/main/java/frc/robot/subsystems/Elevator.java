@@ -13,6 +13,9 @@ public class Elevator extends SubsystemBase {
     public VictorSPX intakeRoller = new VictorSPX(kINTAKE_MOTOR_NODE); // first motor to come in contact with the ball (furthest away from the center of the module)
     public DigitalInput indexSensor = new DigitalInput(kDIGITAL_INPUT);//Sensor conection placement thingie
     
+    public Elevator() {
+    }
+
 
     //Sets Bottom Motors Speed
     public void setRollerSpeed(double speed) {

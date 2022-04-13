@@ -22,7 +22,7 @@ public class Get2HighEject2Auto extends SequentialCommandGroup {
                 new AutoDrive(robotDrive, 0.6, 1000,0),//(robot, speed, and duration in millis, rotation in degrees)
                 new stopIntake(intake),
                 //new AutoDrive(robotDrive, -0.6, 1000,0),//(robot, speed, and duration in millis, rotation in degrees)
-                new ParallelDeadlineGroup(new Delay(2000), new HorizontalAim(aim, robotDrive, shooter)),
+                new ParallelDeadlineGroup(new Delay(2000), new HorizontalAim()),
                 new Shooting2Balls(elevator),
                 new IntakeBall(intake),
                 new ResetPosition(),

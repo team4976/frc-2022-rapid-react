@@ -1,25 +1,23 @@
 package frc.robot.commands.aim;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.AutoAim;
-import frc.robot.subsystems.FlywheelShooter;
-import frc.robot.subsystems.RobotDrive;
 
 public class HorizontalAim extends CommandBase{
 
-    private AutoAim autoaim;
-    private RobotDrive robotDrive;
-    private FlywheelShooter shooter;
+    public HorizontalAim() {
 
-    public HorizontalAim(AutoAim autoaim, RobotDrive robotDrive, FlywheelShooter shooter){
-        this.autoaim = autoaim;
-        this.robotDrive = robotDrive;
-        this.shooter = shooter;
-        addRequirements(autoaim, robotDrive);
+        addRequirements(
+            RobotContainer.autoaim,
+            RobotContainer.robotDrive,
+            RobotContainer.shooter
+            );
     }
 
     @Override
     public void initialize(){
+        RobotContainer.statusLight.breathing = false;
         AutoAim.table.getEntry("ledMode").setNumber(3);
         super.initialize();
     }
@@ -31,10 +29,12 @@ public class HorizontalAim extends CommandBase{
 
     @Override
     public void execute(){
-        AutoAim.target(robotDrive, shooter);
+        AutoAim.target(RobotContainer.robotDrive, RobotContainer.shooter);
     }
+
     @Override
     public void end(boolean interrupted) {
+        RobotContainer.statusLight.breathing = true;
         AutoAim.table.getEntry("ledMode").setNumber(1);
     }
 }

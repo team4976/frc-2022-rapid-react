@@ -5,19 +5,13 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.AddressableLED;
-import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.AutoAim;
-import frc.robot.subsystems.LED;
-import static frc.robot.Constants.*;
-
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import frc.robot.subsystems.StatusLight;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -30,9 +24,6 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
-
-  LED led = new LED();
 
 
   /**
@@ -65,8 +56,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
-    led.ledRainbow(50);
 
   NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setDouble(1);
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
