@@ -24,6 +24,13 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+<<<<<<< Updated upstream
+=======
+
+  public static LED led = new LED();
+
+
+>>>>>>> Stashed changes
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -43,6 +50,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+<<<<<<< Updated upstream
+=======
+
+    led.setLed(120,225,225);
+
+
+  NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setDouble(1);
+>>>>>>> Stashed changes
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
@@ -60,6 +75,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
+
+    led.ledRainbow(50);
+    //led.setLed(120, 255, 255);
     AutoAim.table.getEntry("ledMode").setNumber(1);
     AutoAim.table.getEntry("camMode").setNumber(1);
   }
