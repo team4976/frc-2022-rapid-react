@@ -186,8 +186,8 @@ public class RobotContainer {
                 return new Get2LowAuto(intake, shooter, robotDrive, elevator, autoaim);
             case 3:
                 return new Get4BallHighPos(intake, shooter, robotDrive, elevator, autoaim);
-            case 4:
-            return new Get2HighEject2Auto(intake, shooter, robotDrive, elevator, autoaim);
+           // case 4:
+            //return new Get2HighEject2Auto(intake, shooter, robotDrive, elevator, autoaim);
         }
         return null;
 
