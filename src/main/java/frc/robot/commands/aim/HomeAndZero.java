@@ -8,7 +8,10 @@ import frc.robot.subsystems.FlywheelShooter;
 public class HomeAndZero extends SequentialCommandGroup{
 
     public HomeAndZero(FlywheelShooter shooter){
-        addCommands(new GoToHome(shooter), new ZeroPos(shooter));
+        addCommands(
+            new GoToHome(shooter), 
+            new ZeroPos(shooter)
+            );
     }
 
 

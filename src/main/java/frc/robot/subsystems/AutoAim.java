@@ -33,28 +33,33 @@ public class AutoAim extends SubsystemBase{
         double tx  = table.getEntry("tx").getDouble(0);
         double ty = table.getEntry("ty").getDouble(0);
         if(hasValidTarget()){
-            RobotContainer.statusLight.setHSV(240, 255, 255);
+            
 
             if (ty >-10 && ty < -7.04) {
                 shooter.setHoodPosition(7000);
                 shooter.setShooterSpeed(11000);
+                RobotContainer.statusLight.setHSV(240, 255, 255);
             }
 
             else if(ty > -7.04 && ty < -6.20){
                 shooter.setHoodPosition(6000);
                 shooter.setShooterSpeed(10500);
+                RobotContainer.statusLight.setHSV(240, 255, 255);
             }
             else if(ty > -4.35 && ty < 0){
                 shooter.setHoodPosition(6000);
                 shooter.setShooterSpeed(10000);
+                RobotContainer.statusLight.setHSV(240, 255, 255);
             }
             else if(ty > 0 && ty < 2.76){
                 shooter.setHoodPosition(5000);
                 shooter.setShooterSpeed(9500);
+                RobotContainer.statusLight.setHSV(240, 255, 255);
             }
             else if(ty > 5.78){
                 shooter.setHoodPosition(5000);
                 shooter.setShooterSpeed(9000);
+                RobotContainer.statusLight.setHSV(240, 255, 255);
             }
         double horizontalAdjust = controller.calculate(tx,0);
         double verticalAdjust = controller2.calculate(ty, 0);

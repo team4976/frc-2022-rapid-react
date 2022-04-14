@@ -29,14 +29,14 @@ public class Load_To_Shooter_Auto extends CommandBase{
 
     @Override
     public void initialize() {
-        elevator.setMotorSpeeds(-kLOAD_SHOOT_SPEED);
+        elevator.setMotorSpeeds(kLOAD_INDEX_SPEED);
         startTime=System.currentTimeMillis();
     }
 
     @Override
     public void execute() {
         if (elevator.indexSensor.get()){
-            elevator.setRollerSpeed(-kLOAD_SHOOT_SPEED);
+            elevator.setRollerSpeed(kLOAD_SHOOT_SPEED);
         }
         else {
             elevator.setRollerSpeed(0);
