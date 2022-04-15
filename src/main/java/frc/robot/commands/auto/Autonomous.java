@@ -19,7 +19,7 @@ public class Autonomous extends SequentialCommandGroup{
             new stopIntake(intakeSub),
             new AutoDrive(robotDrive, -0.6, 1450, 0),//speed, duration in millis, and rotation
             new Delay(1000),
-            new Shooting2Balls(elevator),
+            new Shooting2Balls(elevator, 600),
             new AutoDrive(robotDrive, 0.6, 2000, 0),  
             new StopShooter(shooterSub)
         );

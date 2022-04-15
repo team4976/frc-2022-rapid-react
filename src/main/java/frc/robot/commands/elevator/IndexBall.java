@@ -13,8 +13,10 @@ public class IndexBall extends CommandBase {
 
     @Override
     public void initialize() {
+        System.out.println("Intializing...");
         if (!elevator.ballAtIndexer()) {
             elevator.setIndexSpeed(-0.3);
+            System.out.println("Starting indexer");
         }
 
         // TODO Auto-generated method stub
@@ -24,10 +26,12 @@ public class IndexBall extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         elevator.setIndexSpeed(0);
+        System.out.println("Indexer set to 0");
     }
 
     @Override
     public boolean isFinished() { 
+        System.out.println("Ball is at the indexer");
         return elevator.ballAtIndexer();
     }
 }

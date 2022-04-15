@@ -29,7 +29,7 @@ public class Get4BallHighPos extends SequentialCommandGroup{
             new StopLoadBallsAuto(elevator),
             new stopIntake(intake),
             new ParallelDeadlineGroup(new Delay(1000), new HorizontalAim()),
-            new Shooting2Balls(elevator),
+            new Shooting2Balls(elevator, 600),
             new StopShooter(shooter),
             new AutoTurn(robotDrive, 1050),
             new IntakeAndLoadAuto(elevator, intake),
@@ -41,7 +41,7 @@ public class Get4BallHighPos extends SequentialCommandGroup{
             new ResetPosition(),
             new AutoTurn(robotDrive, -1300),
             new ParallelDeadlineGroup(new Delay(800), new HorizontalAim()),
-            new Shooting2Balls(elevator)
+            new Shooting2Balls(elevator, 2000)
         );
     }
 }

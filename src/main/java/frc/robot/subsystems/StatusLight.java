@@ -25,7 +25,7 @@ public class StatusLight extends SubsystemBase implements Sendable  {
     }
 
     public void setHSV(int hue, int saturation, int value) {
-        System.out.println("h:" + hue + " s:" + saturation + " v:" + value);
+       // System.out.println("h:" + hue + " s:" + saturation + " v:" + value);
         //if (lastHue == hue && lastSaturation == saturation && lastValue == value) return;
 
 //        lastHue = hue;

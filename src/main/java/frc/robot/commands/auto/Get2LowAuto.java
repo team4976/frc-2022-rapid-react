@@ -22,7 +22,7 @@ public class Get2LowAuto extends SequentialCommandGroup {
             new AutoDrive(robotDrive, -0.6, 2000,0),//(robot, speed, and duration in millis, rotation in degrees)
             new Delay(1000),
             //new AutoAimAuto(aim, robotDrive, 1000),//aims for 1 second
-            new Shooting2Balls(elevator),
+            new Shooting2Balls(elevator, 600),
             new AutoDrive(robotDrive, 0.6, 2000,0),//(robot, speed, and duration in millis, rotation in degrees)
             new StopShooter(shooter)
         );

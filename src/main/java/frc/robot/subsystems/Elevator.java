@@ -30,7 +30,9 @@ public class Elevator extends SubsystemBase {
 
     //Button Digital Input
     public boolean ballAtIndexer(){
+        System.out.println("got index value");
         return indexSensor.get() == false;
+
     }
 
     //Sets Both Motors Speed

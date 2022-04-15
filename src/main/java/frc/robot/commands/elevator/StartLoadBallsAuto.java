@@ -20,7 +20,7 @@ public class StartLoadBallsAuto extends CommandBase{
 
     @Override
     public void initialize() {
-        elevator.setIndexSpeed(-0.2);
+        //elevator.setIndexSpeed(-0.2);
         elevator.setRollerSpeed(0.4);
     }
     @Override
