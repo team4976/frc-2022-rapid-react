@@ -27,9 +27,10 @@ public class Get2HighEject2Auto extends SequentialCommandGroup {
                 new IntakeBall(intake),
                 new ResetPosition(),
                 new AutoTurn(robotDrive, 7500),
-                new AutoDrive(robotDrive, 0.5, 500,0),//(robot, speed, and duration in millis, rotation in degrees)
+                new AutoDrive(robotDrive, 0.7, 1200,0),//(robot, speed, and duration in millis, rotation in degrees)
                 new StopShooter(shooter),
-                new AutoDrive(robotDrive, -1, 2000,0),//(robot, speed, and duration in millis, rotation in degrees)
+                new AutoTurn(robotDrive, -1500),
+                new AutoDrive(robotDrive, -1, 2300,0),//(robot, speed, and duration in millis, rotation in degrees)
                 new ResetPosition(),
                 new AutoTurn(robotDrive, -1200),
                 new Eject(intake, elevator, shooter)
