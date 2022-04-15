@@ -9,7 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class FlywheelShooter extends SubsystemBase {
-   public DigitalInput HomePosition = new DigitalInput(2);
+   public DigitalInput HomePosition = new DigitalInput(5);
 
     public TalonFX shootmotor = new TalonFX(kSHOOTER_A_NODE_ID);
 

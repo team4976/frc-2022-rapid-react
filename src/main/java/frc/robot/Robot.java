@@ -28,7 +28,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  private Elevator elevator;
+  //private Elevator elevator;
 
 
 
@@ -97,12 +97,12 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    if (!elevator.ballAtIndexer()) {
+   /* if (!elevator.ballAtIndexer()) {
       elevator.setIndexSpeed(-0.3);
     }
     else {
       elevator.setIndexSpeed(0);
-    }
+    }*/
   }
 
   @Override

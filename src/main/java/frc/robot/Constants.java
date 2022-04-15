@@ -31,7 +31,7 @@ public final class Constants {
 
 
     /** Shooter **/
-    public static int kHOOD_NODE_ID = 50;
+    public static int kHOOD_NODE_ID = 53;
 
     public static int kSHOOTER_A_NODE_ID = 42;
 

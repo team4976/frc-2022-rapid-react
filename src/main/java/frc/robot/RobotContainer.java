@@ -178,7 +178,7 @@ public class RobotContainer {
 
 
         int selection = (int) entry.getDouble(0);
-
+        System.out.println(selection);
         switch (selection) {
             case 1:
                 return new Get2HighAuto(intake, shooter, robotDrive, elevator, autoaim);

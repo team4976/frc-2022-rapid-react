@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.Delay;
 import frc.robot.commands.aim.HomeAndZero;
 import frc.robot.commands.aim.HorizontalAim;
+import frc.robot.commands.intake.IntakeAndLoad;
+import frc.robot.commands.intake.IntakeAndLoadAuto;
 import frc.robot.commands.intake.IntakeBall;
 import frc.robot.commands.intake.stopIntake;
 import frc.robot.subsystems.FlywheelShooter;
@@ -16,9 +18,10 @@ import frc.robot.subsystems.RobotDrive;
 
 public class Get2HighAuto extends SequentialCommandGroup{
     public Get2HighAuto(Intake intake, FlywheelShooter shooter, RobotDrive robotDrive, Elevator elevator, AutoAim aim) {
+        System.out.println("Starting Auto");
         addCommands(
             new HomeAndZero(shooter),
-            new IntakeBall(intake), 
+            new IntakeBall(intake),
             new SpoolHighCommand(shooter),
             new AutoDrive(robotDrive, 0.6, 1500,0),//(robot, speed, and duration in millis, rotation in degrees)
             new stopIntake(intake),
