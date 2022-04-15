@@ -18,6 +18,9 @@ public class IndexBallAuto extends CommandBase {
             elevator.setIndexSpeed(-0.3);
             System.out.println("Starting indexer");
         }
+        else {
+            elevator.setIndexSpeed(0);
+        }
 
         // TODO Auto-generated method stub
         super.initialize();
@@ -28,6 +31,7 @@ public class IndexBallAuto extends CommandBase {
         elevator.setIndexSpeed(0);
         System.out.println("Indexer set to 0");
     }
+
 
     @Override
     public boolean isFinished() { 

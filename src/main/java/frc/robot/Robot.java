@@ -10,7 +10,9 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.elevator.IndexBall;
 import frc.robot.subsystems.AutoAim;
+import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.FlywheelShooter;
 import frc.robot.subsystems.StatusLight;
 import frc.robot.commands.aim.HomeAndZero;
@@ -26,6 +28,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  private Elevator elevator;
+
 
 
   /**
@@ -92,7 +96,14 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    if (!elevator.ballAtIndexer()) {
+      elevator.setIndexSpeed(-0.3);
+    }
+    else {
+      elevator.setIndexSpeed(0);
+    }
+  }
 
   @Override
   public void teleopInit() {
