@@ -15,29 +15,22 @@ public class Intake extends SubsystemBase {
 
     boolean intaking = false;
 
-    VictorSPX BottomElevator = new VictorSPX(kINTAKE_MOTOR_NODE);
-    VictorSPX TopElevator  = new VictorSPX(kINDEX_NODE);
     public TalonFX intakeMotor = new TalonFX(kINTAKE_NODE);
     public Solenoid piston = new Solenoid(kPCM_NODE_ID, kPCM_TYPE, kINTAKE_SOLENOID_CHANNEL);
 
     public void intakeBall() {
         intaking = true;
         intakeMotor.set(ControlMode.PercentOutput, kINTAKE_RUN);
-        BottomElevator.set(ControlMode.PercentOutput, kBOTTOM_ELEVATOR);
         piston.set(true);
     }
 
     public void ejectBall() {
         intakeMotor.set(ControlMode.PercentOutput, kEJECT_INTAKE);
-        BottomElevator.set(ControlMode.PercentOutput, kBOTTOM_ELEVATOR_EJECT);
-        TopElevator.set(ControlMode.PercentOutput, kTOP_ELEVATOR_EJECT);
         piston.set(true);
     }
 
     public void stopIntake() {
-        TopElevator.set(ControlMode.PercentOutput, 0);
         intakeMotor.set(ControlMode.PercentOutput, 0);
-        BottomElevator.set(ControlMode.PercentOutput,0);
         piston.set(false);
     }
     

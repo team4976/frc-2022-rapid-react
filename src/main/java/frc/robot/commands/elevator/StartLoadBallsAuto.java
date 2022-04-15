@@ -8,27 +8,25 @@ import static frc.robot.Constants.*;
 This Code runs while Intake is on
 */
 
-public class Load_Balls extends CommandBase{
+public class StartLoadBallsAuto extends CommandBase{
     
     private Elevator elevator;
     
-    public Load_Balls(Elevator elevator){
+    public StartLoadBallsAuto(Elevator elevator){
         this.elevator = elevator;
         addRequirements(elevator);
     }
 
-    @Override
-    public boolean isFinished() {
-        return false;
-    }
 
     @Override
     public void initialize() {
-        elevator.setMotorSpeeds(kINITIAL_SPEED);
+        elevator.setIndexSpeed(-0.2);
+        elevator.setRollerSpeed(0.4);
+    }
+    @Override
+    public boolean isFinished() {
+        // TODO Auto-generated method stub
+        return true;
     }
 
-    @Override
-    public void end(boolean interrupted) {
-        elevator.setMotorSpeeds(kSTOP_SPEED);
-    }
 }

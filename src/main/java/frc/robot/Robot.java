@@ -5,19 +5,17 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.AddressableLED;
-import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.elevator.IndexBall;
 import frc.robot.subsystems.AutoAim;
-import frc.robot.subsystems.LED;
-import static frc.robot.Constants.*;
-
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.FlywheelShooter;
+import frc.robot.subsystems.StatusLight;
+import frc.robot.commands.aim.HomeAndZero;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -30,9 +28,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  private Elevator elevator;
 
-
-  LED led = new LED();
 
 
   /**
@@ -49,6 +46,7 @@ public class Robot extends TimedRobot {
     if (!entry.exists()) entry.setDouble(0);
 
     CameraServer.startAutomaticCapture();
+    RobotContainer.robotDrive.setCoastMode();
 
     m_robotContainer = new RobotContainer();
   }
@@ -65,8 +63,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    led.ledRainbow(50);
-
   NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setDouble(1);
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
@@ -77,7 +73,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    RobotContainer.robotDrive.setCoastMode();
+  }
 
   @Override
   public void disabledPeriodic() {
@@ -87,6 +85,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+    RobotContainer.robotDrive.setBreakingMode();
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -97,7 +96,14 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    if (!elevator.ballAtIndexer()) {
+      elevator.setIndexSpeed(-0.3);
+    }
+    else {
+      elevator.setIndexSpeed(0);
+    }
+  }
 
   @Override
   public void teleopInit() {
@@ -105,10 +111,16 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    RobotContainer.robotDrive.setBreakingMode();
+
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    //FlywheelShooter shooter;
+    //HomeAndZero(shooter);
+
   }
+
 
   /** This function is called periodically during operator control. */
   @Override

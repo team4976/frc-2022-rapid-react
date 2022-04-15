@@ -21,5 +21,6 @@ public class EjectIntake extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         intake.piston.set(false);
+        intake.intakeMotor.set(ControlMode.PercentOutput, 0);
     }
 }

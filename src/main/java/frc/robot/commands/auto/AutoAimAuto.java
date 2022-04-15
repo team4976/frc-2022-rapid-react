@@ -10,7 +10,7 @@ public class AutoAimAuto extends CommandBase{
     int duration;
     long startTime;
     public AutoAimAuto (AutoAim autoaim, RobotDrive robotDrive, int duration){
-        aim = new HorizontalAim(autoaim, robotDrive, null);
+        aim = new HorizontalAim();
         this.duration = duration;
     }
     

@@ -14,7 +14,6 @@ import frc.robot.commands.aim.HomeAndZero;
 import frc.robot.commands.aim.HorizontalAim;
 import frc.robot.commands.auto.*;
 import frc.robot.commands.elevator.Load_To_Shooter;
-import frc.robot.commands.elevator.Load_To_Shooter_Auto;
 import frc.robot.commands.intake.IntakeAndLoad;
 import frc.robot.commands.intake.extendBumper;
 import frc.robot.commands.intake.retractBumper;
@@ -24,17 +23,11 @@ import frc.robot.commands.shooter.SpoolHigh;
 import frc.robot.commands.shooter.SpoolLow;
 import frc.robot.commands.shooter.StopShooter;
 import frc.robot.commands.climber.RetractClimberHooks;
-import frc.robot.subsystems.AutoAim;
-import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.FlywheelShooter;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.LED;
+import frc.robot.subsystems.*;
 import frc.robot.commands.drive.EngageTurbo;
 import frc.robot.commands.drive.TeleopDrive;
 import frc.robot.commands.climber.TeleopClimber;
 import frc.robot.commands.climber.ExtendClimberHooks;
-import frc.robot.subsystems.RobotDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -54,6 +47,8 @@ public class RobotContainer {
     public static final Intake intake = new Intake();
     public static final Climber climber = new Climber();
     public static final AutoAim autoaim = new AutoAim();
+    public static final StatusLight statusLight = new StatusLight();
+
 //    public static final LED led = new LED(5, 5, 5);
 
 
@@ -66,6 +61,7 @@ public class RobotContainer {
     public RobotContainer() {
 
         climber.register();
+        statusLight.register();
 
         //void setBrakingMode(bool enabled)
 
@@ -128,6 +124,9 @@ public class RobotContainer {
         new JoystickButton(_primaryController, XboxController.Button.kBack.value)
             .whenPressed(new HomeAndZero(shooter));
 
+        new JoystickButton(_primaryController, XboxController.Button.kBack.value)
+            .whenPressed(new StopShooter(shooter));
+
         new JoystickButton(_primaryController, XboxController.Button.kStart.value)
             .whenPressed(new LowShootHood(shooter));
 
@@ -152,7 +151,7 @@ public class RobotContainer {
             .whenPressed(new RetractClimberHooks());
 
         new JoystickButton(_primaryController, XboxController.Button.kLeftBumper.value)
-            .whileHeld(new HorizontalAim(autoaim, robotDrive, shooter));
+            .whileHeld(new HorizontalAim());
 
 
         //new JoystickButton(_primaryController, XboxController.Button.kY.value)
@@ -187,8 +186,8 @@ public class RobotContainer {
                 return new Get2LowAuto(intake, shooter, robotDrive, elevator, autoaim);
             case 3:
                 return new Get4BallHighPos(intake, shooter, robotDrive, elevator, autoaim);
-            case 4:
-            return new Get2HighEject2Auto(intake, shooter, robotDrive, elevator, autoaim);
+           // case 4:
+            //return new Get2HighEject2Auto(intake, shooter, robotDrive, elevator, autoaim);
         }
         return null;
 
